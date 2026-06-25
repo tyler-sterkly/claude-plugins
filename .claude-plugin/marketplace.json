@@ -1,0 +1,31 @@
+{
+  "name": "tylersterkly-claude-plugins",
+  "owner": {
+    "name": "tylersterkly",
+    "url": "https://github.com/tylersterkly"
+  },
+  "metadata": {
+    "description": "Claude Code plugins by tylersterkly",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "logo-designer",
+      "source": "./plugins/logo-designer/",
+      "description": "Design and iterate on logos using SVG. Generates side-by-side previews and exports to PNG at standard sizes.",
+      "version": "1.0.0",
+      "author": {
+        "name": "tylersterkly",
+        "url": "https://github.com/tylersterkly"
+      },
+      "homepage": "https://github.com/tylersterkly/claude-plugins",
+      "repository": "https://github.com/tylersterkly/claude-plugins",
+      "license": "MIT",
+      "keywords": ["logo", "svg", "design", "icon", "branding"],
+      "category": "workflows",
+      "skills": [
+        "./skills/logo-designer"
+      ]
+    }
+  ]
+}
