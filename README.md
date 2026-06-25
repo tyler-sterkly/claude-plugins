@@ -4,7 +4,7 @@
 
 Claude Code plugins by tyler-sterkly - skills for browser extension development, design, writing, and coding.
 
-![Claude Code Starting Session ASCii Art](startup_screen.svg)
+![Claude Code Starting Session](startup_screen.svg)
 
 
 ## Installation
