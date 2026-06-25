@@ -4,26 +4,22 @@ Claude Code plugins by tyler-sterkly.
 
 ## Installation
 
-### Option 1 — Plugin install (recommended)
-
-Install directly from GitHub without cloning:
+### Option 1 — Install directly from GitHub (recommended)
 
 ```bash
-claude plugin install github:tyler-sterkly/claude-plugins
+claude plugin install github:tyler-sterkly/claude-plugins --scope user
 ```
 
-This fetches the latest version and registers all plugins automatically.
+Use `--scope user` to install for all your projects, or `--scope project` to install only for the current project.
 
-### Option 2 — Fork and install locally
-
-Fork this repo on GitHub, clone it, then install from the local path:
+### Option 2 — Clone and install locally
 
 ```bash
-git clone https://github.com/<your-username>/claude-plugins
-claude plugin install ./claude-plugins
+git clone https://github.com/tyler-sterkly/claude-plugins.git
+claude plugin install ./claude-plugins --scope user
 ```
 
-This lets you customize skills before installing. After editing, re-run the install command to pick up changes.
+Clone first if you want to inspect or modify skills before installing. Re-run the install command after any edits to pick up changes.
 
 ## Plugins
 
