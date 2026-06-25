@@ -84,7 +84,7 @@ After installing, invoke a skill with its slash command:
 
 ## Skill Reference
 
-### <u>design-logo</u>
+### <ins>design-logo</ins>
 
 Design and iterate on logos using SVG, with structured phases from brief to exported PNGs.
 
@@ -99,7 +99,7 @@ Design and iterate on logos using SVG, with structured phases from brief to expo
 ---
 <br>
 
-### <u>design-svg</u>
+### <ins>design-svg</ins>
 
 Generates and edits SVG files by hand - treating SVGs as code rather than exported blobs.
 
@@ -119,7 +119,7 @@ Generates and edits SVG files by hand - treating SVGs as code rather than export
 ---
 <br>
 
-### <u>design-icon-set</u>
+### <ins>design-icon-set</ins>
 
 Generates a complete browser-extension icon set from a single square source icon (SVG or PNG).
 
@@ -136,7 +136,7 @@ Generates a complete browser-extension icon set from a single square source icon
 ---
 <br>
 
-### <u>design-frontend-ui</u>
+### <ins>design-frontend-ui</ins>
 
 Full UI design workflow focused on distinctive, opinionated visual direction - not templated defaults.
 
@@ -153,7 +153,7 @@ Full UI design workflow focused on distinctive, opinionated visual direction - n
 ---
 <br>
 
-### <u>gen-changelog</u>
+### <ins>gen-changelog</ins>
 
 Generates clean, public-facing changelogs and GitHub commit messages for browser extension releases.
 
@@ -175,7 +175,7 @@ Generates clean, public-facing changelogs and GitHub commit messages for browser
 ---
 <br>
 
-### <u>gen-privacy</u>
+### <ins>gen-privacy</ins>
 
 Generates a US + GDPR compliant privacy policy for a Firefox browser extension and its associated website.
 
@@ -190,7 +190,7 @@ Generates a US + GDPR compliant privacy policy for a Firefox browser extension a
 ---
 <br>
 
-### <u>gen-terms</u>
+### <ins>gen-terms</ins>
 
 Generates terms of service for a Firefox browser extension and its website, governed by California law.
 
@@ -205,7 +205,7 @@ Generates terms of service for a Firefox browser extension and its website, gove
 ---
 <br>
 
-### <u>gen-deep-research</u>
+### <ins>gen-deep-research</ins>
 
 Multi-source research harness that fans out searches, fetches primary sources, adversarially verifies claims, and synthesizes a cited report.
 
@@ -223,7 +223,7 @@ Minimum 6 distinct sources per report.
 ---
 <br>
 
-### <u>code-review</u>
+### <ins>code-review</ins>
 
 Multi-agent PR review that runs 5 parallel reviewers, scores findings by confidence, and posts results as a PR comment.
 
@@ -243,7 +243,7 @@ Multi-agent PR review that runs 5 parallel reviewers, scores findings by confide
 ---
 <br>
 
-### <u>code-security-review</u>
+### <ins>code-security-review</ins>
 
 OWASP Top 10 focused security audit of code changes or a codebase area.
 
@@ -269,7 +269,7 @@ OWASP Top 10 focused security audit of code changes or a codebase area.
 ---
 <br>
 
-### <u>code-simplify</u>
+### <ins>code-simplify</ins>
 
 Reviews changed code for unnecessary complexity and applies cleanups directly. Quality-only - does not hunt for bugs.
 
