@@ -1,6 +1,6 @@
-# tylersterkly Claude Plugins
+# tyler-sterkly Claude Plugins
 
-Claude Code plugins by tylersterkly.
+Claude Code plugins by tyler-sterkly.
 
 ## Installation
 
@@ -9,7 +9,7 @@ Claude Code plugins by tylersterkly.
 Install directly from GitHub without cloning:
 
 ```bash
-claude plugin install github:tylersterkly/claude-plugins
+claude plugin install github:tyler-sterkly/claude-plugins
 ```
 
 This fetches the latest version and registers all plugins automatically.
