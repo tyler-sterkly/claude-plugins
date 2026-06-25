@@ -4,22 +4,26 @@ Claude Code plugins by tyler-sterkly.
 
 ## Installation
 
-### Option 1 — Install directly from GitHub (recommended)
+**Step 1 — Add this marketplace (one-time):**
 
-```bash
-claude plugin install github:tyler-sterkly/claude-plugins --scope user
+```
+/plugin marketplace add tyler-sterkly/claude-plugins
 ```
 
-Use `--scope user` to install for all your projects, or `--scope project` to install only for the current project.
+**Step 2 — Install a plugin:**
 
-### Option 2 — Clone and install locally
-
-```bash
-git clone https://github.com/tyler-sterkly/claude-plugins.git
-claude plugin install ./claude-plugins --scope user
+```
+/plugin install logo-designer@tyler-sterkly-claude-plugins
 ```
 
-Clone first if you want to inspect or modify skills before installing. Re-run the install command after any edits to pick up changes.
+Or via the Claude Code CLI:
+
+```bash
+claude plugin marketplace add tyler-sterkly/claude-plugins
+claude plugin install logo-designer@tyler-sterkly-claude-plugins
+```
+
+You can also browse and install interactively: run `/plugin`, open the **Discover** tab, and press Enter on any plugin to choose your install scope (user, project, or local).
 
 ## Plugins
 
