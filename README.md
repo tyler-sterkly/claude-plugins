@@ -62,9 +62,7 @@ You can also browse and install interactively: run `/plugin`, open the **Discove
 
 | Plugin | Description |
 |--------|-------------|
-| `code-review` | Review PRs for bugs and compliance, optionally posts inline comments |
-| `code-security-review` | OWASP-focused security audit of changed code |
-| `code-simplify` | Dead code removal, simplification, and DRY-ness pass |
+| `code-review` | Review PRs for bugs and compliance, posts findings as a PR comment |
 
 ### Utilities
 
@@ -273,55 +271,6 @@ Multi-agent PR review that runs 5 parallel reviewers, scores findings by confide
 <br>
 
 ---
-<br>
-
-### <ins>code-security-review</ins>
-
-OWASP Top 10 focused security audit of code changes or a codebase area.
-
-**What it checks:**
-
-| Category | Examples |
-|----------|---------|
-| Injection | SQL injection, XSS, command injection, template injection |
-| Broken auth | Hardcoded credentials, weak tokens, missing auth checks |
-| Sensitive data exposure | API keys or passwords in code, unencrypted PII |
-| Security misconfiguration | Permissive CORS, missing security headers, debug mode on |
-| Insecure deserialization | Untrusted data passed to deserializers without validation |
-| Vulnerable dependencies | Packages with known CVEs (flagged, not exhaustively listed) |
-| Broken access control | Missing authorization checks, privilege escalation paths |
-| Insufficient logging | Security-relevant events not logged |
-| SSRF | User-controlled URLs fetched server-side without validation |
-| Prototype pollution | Unsafe object merges in JavaScript |
-
-**Output:** Findings listed by severity with file references and a recommended fix for each.
-
-<br>
-
----
-<br>
-
-### <ins>code-simplify</ins>
-
-Reviews changed code for unnecessary complexity and applies cleanups directly. Quality-only - does not hunt for bugs.
-
-**What it removes or replaces:**
-
-| Pattern | Action |
-|---------|--------|
-| Duplicated logic | Extract to shared function |
-| Abstraction with no benefit | Inline it |
-| Dead code (unused vars, functions, imports) | Delete it |
-| Over-engineered solution | Replace with simpler equivalent |
-| Single-use intermediate variables | Inline the expression |
-| Nested conditionals | Flatten with early returns |
-| Manual loops | Replace with map / filter / reduce / find |
-| Comments explaining what (not why) | Delete them |
-
-**Hard rules:** Does not change behavior, does not add error handling, does not introduce new abstractions - only removes ones that are not earning their place.
-
-
-<br>
 <br>
 
 ### <ins>cc-terminal-title</ins>
