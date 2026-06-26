@@ -62,6 +62,168 @@
       "skills": [
         "./skills/logo-designer"
       ]
+    },
+    {
+      "name": "design-logo",
+      "source": "./plugins/design-logo/",
+      "description": "Design and iterate on logos using SVG. Generates side-by-side previews and exports to PNG at standard sizes.",
+      "version": "1.0.0",
+      "author": {
+        "name": "tyler-sterkly",
+        "url": "https://github.com/tyler-sterkly"
+      },
+      "homepage": "https://github.com/tyler-sterkly/claude-plugins",
+      "repository": "https://github.com/tyler-sterkly/claude-plugins",
+      "license": "MIT",
+      "keywords": ["logo", "svg", "design", "icon", "branding"],
+      "category": "workflows",
+      "skills": [
+        "./skills/design-logo"
+      ]
+    },
+    {
+      "name": "design-svg",
+      "source": "./plugins/design-svg/",
+      "description": "Generates and edits SVG logos, icons, and graphics by hand. Covers path commands, shape primitives, styling, accessibility, gradients, masks, sprites, optimization, and animation.",
+      "version": "1.0.0",
+      "author": {
+        "name": "tyler-sterkly",
+        "url": "https://github.com/tyler-sterkly"
+      },
+      "homepage": "https://github.com/tyler-sterkly/claude-plugins",
+      "repository": "https://github.com/tyler-sterkly/claude-plugins",
+      "license": "MIT",
+      "keywords": ["svg", "design", "icon", "logo", "graphics"],
+      "category": "workflows",
+      "skills": [
+        "./skills/design-svg"
+      ]
+    },
+    {
+      "name": "design-icon-set",
+      "source": "./plugins/design-icon-set/",
+      "description": "Generate a full icon set and favicon from a single square source icon. Produces PNG sizes, a multi-resolution favicon.ico, and an optional logo lockup.",
+      "version": "1.0.0",
+      "author": {
+        "name": "tyler-sterkly",
+        "url": "https://github.com/tyler-sterkly"
+      },
+      "homepage": "https://github.com/tyler-sterkly/claude-plugins",
+      "repository": "https://github.com/tyler-sterkly/claude-plugins",
+      "license": "MIT",
+      "keywords": ["icons", "favicon", "png", "svg", "logo"],
+      "category": "workflows",
+      "skills": [
+        "./skills/design-icon-set"
+      ]
+    },
+    {
+      "name": "design-frontend-ui",
+      "source": "./plugins/design-frontend-ui/",
+      "description": "Guidance for distinctive, intentional visual design when building new UI or reshaping an existing one.",
+      "version": "1.0.0",
+      "author": {
+        "name": "tyler-sterkly",
+        "url": "https://github.com/tyler-sterkly"
+      },
+      "homepage": "https://github.com/tyler-sterkly/claude-plugins",
+      "repository": "https://github.com/tyler-sterkly/claude-plugins",
+      "license": "MIT",
+      "keywords": ["ui", "design", "frontend", "css", "typography"],
+      "category": "workflows",
+      "skills": [
+        "./skills/design-frontend-ui"
+      ]
+    },
+    {
+      "name": "gen-changelog",
+      "source": "./plugins/gen-changelog/",
+      "description": "Generates a clean, public-facing changelog and GitHub commit message for a browser extension release or update.",
+      "version": "1.0.0",
+      "author": {
+        "name": "tyler-sterkly",
+        "url": "https://github.com/tyler-sterkly"
+      },
+      "homepage": "https://github.com/tyler-sterkly/claude-plugins",
+      "repository": "https://github.com/tyler-sterkly/claude-plugins",
+      "license": "MIT",
+      "keywords": ["changelog", "release", "commit", "firefox", "extension"],
+      "category": "workflows",
+      "skills": [
+        "./skills/gen-changelog"
+      ]
+    },
+    {
+      "name": "gen-privacy",
+      "source": "./plugins/gen-privacy/",
+      "description": "Generates a US + GDPR compliant privacy policy for a Firefox browser extension and its associated website.",
+      "version": "1.0.0",
+      "author": {
+        "name": "tyler-sterkly",
+        "url": "https://github.com/tyler-sterkly"
+      },
+      "homepage": "https://github.com/tyler-sterkly/claude-plugins",
+      "repository": "https://github.com/tyler-sterkly/claude-plugins",
+      "license": "MIT",
+      "keywords": ["privacy", "gdpr", "ccpa", "legal", "firefox"],
+      "category": "workflows",
+      "skills": [
+        "./skills/gen-privacy"
+      ]
+    },
+    {
+      "name": "gen-terms",
+      "source": "./plugins/gen-terms/",
+      "description": "Generates terms of service for a Firefox browser extension and its website, governed by California law.",
+      "version": "1.0.0",
+      "author": {
+        "name": "tyler-sterkly",
+        "url": "https://github.com/tyler-sterkly"
+      },
+      "homepage": "https://github.com/tyler-sterkly/claude-plugins",
+      "repository": "https://github.com/tyler-sterkly/claude-plugins",
+      "license": "MIT",
+      "keywords": ["terms", "legal", "tos", "firefox", "extension"],
+      "category": "workflows",
+      "skills": [
+        "./skills/gen-terms"
+      ]
+    },
+    {
+      "name": "gen-deep-research",
+      "source": "./plugins/gen-deep-research/",
+      "description": "Deep research harness: fan-out web searches, fetch sources, adversarially verify claims, synthesize a cited report.",
+      "version": "1.0.0",
+      "author": {
+        "name": "tyler-sterkly",
+        "url": "https://github.com/tyler-sterkly"
+      },
+      "homepage": "https://github.com/tyler-sterkly/claude-plugins",
+      "repository": "https://github.com/tyler-sterkly/claude-plugins",
+      "license": "MIT",
+      "keywords": ["research", "web", "search", "report", "citations"],
+      "category": "workflows",
+      "skills": [
+        "./skills/gen-deep-research"
+      ]
+    },
+    {
+      "name": "code-review",
+      "source": "./plugins/code-review/",
+      "description": "Reviews a pull request for bugs and CLAUDE.md compliance using parallel agents, then posts findings as a PR comment.",
+      "version": "1.0.0",
+      "author": {
+        "name": "tyler-sterkly",
+        "url": "https://github.com/tyler-sterkly"
+      },
+      "homepage": "https://github.com/tyler-sterkly/claude-plugins",
+      "repository": "https://github.com/tyler-sterkly/claude-plugins",
+      "license": "MIT",
+      "keywords": ["code-review", "pr", "github", "pull-request", "quality"],
+      "category": "workflows",
+      "skills": [
+        "./skills/code-review"
+      ]
     }
   ]
 }
