@@ -10,6 +10,24 @@
   },
   "plugins": [
     {
+      "name": "cc-terminal-title",
+      "source": "./plugins/cc-terminal-title/",
+      "description": "Windows-native Claude Code Pulse: updates Windows Terminal title bar in real time with live status icons as Claude works. Port of claude-code-pulse using Win32 SetWindowText via a persistent PowerShell daemon.",
+      "version": "1.0.0",
+      "author": {
+        "name": "tyler-sterkly",
+        "url": "https://github.com/tyler-sterkly"
+      },
+      "homepage": "https://github.com/tyler-sterkly/claude-plugins",
+      "repository": "https://github.com/tyler-sterkly/claude-plugins",
+      "license": "MIT",
+      "keywords": ["windows", "terminal", "title", "status", "claude-code-pulse"],
+      "category": "workflows",
+      "skills": [
+        "./skills/cc-terminal-title"
+      ]
+    },
+    {
       "name": "logo-designer",
       "source": "./plugins/logo-designer/",
       "description": "Design and iterate on logos using SVG. Generates side-by-side previews and exports to PNG at standard sizes.",
