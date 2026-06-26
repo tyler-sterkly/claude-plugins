@@ -28,6 +28,24 @@
       ]
     },
     {
+      "name": "gen-extension-md",
+      "source": "./plugins/gen-extension-md/",
+      "description": "Creates or updates the EXTENSION.md identity file for a Firefox MV3 browser extension in the BitBoxMedia suite. Reads manifest.json, config.js, locales, and icons to fill in all fields automatically.",
+      "version": "1.0.0",
+      "author": {
+        "name": "tyler-sterkly",
+        "url": "https://github.com/tyler-sterkly"
+      },
+      "homepage": "https://github.com/tyler-sterkly/claude-plugins",
+      "repository": "https://github.com/tyler-sterkly/claude-plugins",
+      "license": "MIT",
+      "keywords": ["firefox", "extension", "identity", "bitboxmedia", "manifest"],
+      "category": "workflows",
+      "skills": [
+        "./skills/gen-extension-md"
+      ]
+    },
+    {
       "name": "logo-designer",
       "source": "./plugins/logo-designer/",
       "description": "Design and iterate on logos using SVG. Generates side-by-side previews and exports to PNG at standard sizes.",
