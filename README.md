@@ -51,6 +51,7 @@ You can also browse and install interactively: run `/plugin`, open the **Discove
 | Plugin | Description |
 |--------|-------------|
 | `gen-changelog` | Public-facing changelog and commit message from diffs or version notes |
+| `gen-extension-md` | Creates or updates the EXTENSION.md identity file for a Firefox extension |
 | `gen-privacy` | GDPR/CCPA-ready privacy policy generator |
 | `gen-terms` | Terms of service generator |
 | `gen-deep-research` | Multi-source web research with adversarially verified, cited report |
@@ -64,6 +65,12 @@ You can also browse and install interactively: run `/plugin`, open the **Discove
 | `code-review` | Review PRs for bugs and compliance, optionally posts inline comments |
 | `code-security-review` | OWASP-focused security audit of changed code |
 | `code-simplify` | Dead code removal, simplification, and DRY-ness pass |
+
+### Utilities
+
+| Plugin | Description |
+|--------|-------------|
+| `cc-terminal-title` | Live Windows Terminal title bar updates with real-time status icons as Claude works |
 
 <br>
 <br>
@@ -147,6 +154,31 @@ Full UI design workflow focused on distinctive, opinionated visual direction - n
 - Takes one real aesthetic risk per design and justifies it.
 
 **Workflow:** Reads any existing project context (memory, prior designs, CLAUDE.md), designs the UI, critiques it against the brief, iterates, and delivers with a rationale for every non-obvious choice.
+
+<br>
+
+---
+<br>
+
+### <ins>gen-extension-md</ins>
+
+Creates or updates the `EXTENSION.md` identity file for a Firefox MV3 browser extension in the BitBoxMedia suite. This file is the canonical identity reference for an extension and should be filled out before any other work begins.
+
+**What it reads:**
+- `manifest.json` - extension name, version, search keyword, search URL
+- `config.js` - FFADDID, EXTID, domains, search URL, API/redirect endpoints
+- `_locales/en_US/messages.json` - short name
+- `icons/*.png` - brand color scheme and icon style
+
+**Output sections:**
+- Identity - name, short name, dir, AMO slug, FFADDID, EXTID, version
+- Domains - primary, search, API (if applicable), WWW (if applicable), landing page
+- Firefox / AMO - listing URL, developer hub URL
+- Search / Redirect - search URL with `{searchTerms}` placeholder, keyword
+- Branding - hex color scheme, icon style description
+- Notes - left blank for dev notes over time
+
+**Key rules:** FFADDID must have curly braces. EXTID is 32 chars with no braces. AMO Slug is lowercase hyphens only. API/WWW domain lines are only included if those domains exist in `config.js`. AMO Reviewer Notes section is never written.
 
 <br>
 
@@ -290,6 +322,35 @@ Reviews changed code for unnecessary complexity and applies cleanups directly. Q
 
 
 <br>
+<br>
+
+### <ins>cc-terminal-title</ins>
+
+Windows-native port of [claude-code-pulse](https://github.com/brianruggieri/claude-code-pulse) that updates the Windows Terminal title bar in real time as Claude works. Uses Win32 `SetWindowText` via a persistent PowerShell daemon instead of OSC escape sequences.
+
+**Usage:** Run `ccp` instead of `claude` to start a session.
+
+**Title format:**
+```
+github (main) | 💭 Thinking
+github (feat/auth) | ✅ Tests passed
+github | fix the login bug | 💾 Committed
+```
+
+**Status icons:** Thinking, Editing, Reading, Testing, Building, Installing, Pushing, Committed, Tests passed, Tests failed, Error, Browsing, Delegating, Monitoring, Idle.
+
+**Requirements:** Git Bash, jq, Claude Code CLI, powershell.exe, Windows Terminal.
+
+**Installation:**
+```bash
+bash /c/github/claude-code-pulse/install.sh
+source ~/.bashrc
+ccp "my task"
+```
+
+<br>
+
+---
 <br>
 
 ## License
