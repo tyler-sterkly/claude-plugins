@@ -7,20 +7,26 @@ description: Generates a clean, public-facing changelog and GitHub commit messag
 
 Write a clean, public-facing changelog for a browser extension release or update.
 
-## Step 0 -- Read EXTENSION.md (optional)
+## Step 0 — Read EXTENSION.md (optional)
 
 Check for `EXTENSION.md` in the project root. The skill works fully without it -- it is supplementary context only.
 
 If it exists, read it and use:
-- **Name** -- use as the extension name if manifest.json only has an i18n placeholder (e.g. `__MSG_extName__`); otherwise prefer the resolved name from _locales/en/messages.json
-- **Current Version** -- for reference only; manifest.json is always the authoritative version source. If the two differ, flag the mismatch to the user but use the manifest.json value
-- **AMO Slug** -- available if the changelog or release file needs to reference the listing URL
+- **Name** — use as the extension name if manifest.json only has an i18n placeholder (e.g. `__MSG_extName__`); otherwise prefer the resolved name from _locales/en/messages.json
+- **Current Version** — for reference only; manifest.json is always the authoritative version source. If the two differ, flag the mismatch to the user but use the manifest.json value
+- **AMO Slug** — available if the changelog or release file needs to reference the listing URL
 
 If the file does not exist, derive the extension name from manifest.json / _locales/en/messages.json as normal.
 
 ## Standalone vs. invoked mode
 
-**Invoked from publish-new-version:** Q1 and Q4 answers are passed in from publish-new-version. Do not re-ask them. The timestamp is also passed in -- use it for file headers. Skip to "Repo and uncommitted files check" below.
+**Invoked from publish-new-version:** The following are passed in -- do not re-ask any of them:
+- Q1 answer (version handling choice)
+- Which doc files to produce (changelog, commits, release file -- derived from the Q4 doc output option)
+- Timestamp (PST, 12-hour, no seconds) -- use this for all file headers
+- `diffSource`: either `"uncommitted"` (use `git diff HEAD`) or `"last-commit"` (use standard git log)
+
+Skip Q1, Q4, the repo/uncommitted check, and Q5 entirely. Go straight to **Source diff** using the passed-in `diffSource` value.
 
 **Called standalone (directly by user):** Ask Q1 and Q4 below before doing anything else. Get the current timestamp in PST for file headers by running this PowerShell command -- never use system local time or any other timezone:
 
@@ -63,7 +69,9 @@ After Q1 is answered, read `manifest.json` and apply the version choice:
 
 ## Repo and uncommitted files check
 
-Run this check only if at least one of CHANGELOG.md, COMMITS.md, or RELEASE file was selected in Q4. Skip entirely if none of those were selected.
+**If invoked from publish-new-version: skip this entire section.** The repo check and diff source decision were already handled there; use the passed-in `diffSource` value and go straight to Source diff.
+
+**Standalone only:** Run this check only if at least one of CHANGELOG.md, COMMITS.md, or RELEASE file was selected in Q4. Skip entirely if none of those were selected.
 
 ### Find the GitHub repo
 
@@ -94,11 +102,14 @@ Present the list of uncommitted files to the user, then ask:
 
 ## Source diff
 
-If Q5 was asked and the user answered **Yes:** collect the diffs for all uncommitted files by running `git diff HEAD` (covers both staged and unstaged changes). Use this combined diff as the source material.
+**If invoked from publish-new-version:** use the passed-in `diffSource` value directly:
+- `"uncommitted"` -- run `git diff HEAD` and use the combined diff as source material
+- `"last-commit"` -- use the standard approach (git log / last commit diff)
 
-If Q5 was not asked, or the user answered **No:** use the standard approach -- pass the diff of what changed leading up to this version (git log / last commit diff).
-
-If no repo was found at all: prompt the user to provide the changes manually (a release description, list of changes, or before/after diff).
+**If standalone:** use the Q5 answer:
+- Q5 = Yes -- run `git diff HEAD` and use the combined diff as source material
+- Q5 = No, or Q5 not asked -- use the standard approach (git log / last commit diff)
+- No repo found at all -- prompt the user to provide the changes manually (a release description, list of changes, or before/after diff)
 
 ## Input
 
@@ -121,7 +132,7 @@ When no repo is found, one of:
 ### Character set
 
 Use only standard US keyboard characters. No special characters:
-- No arrows (-> => ->)
+- No arrows (->  =>  ->)
 - No em dash or en dash
 - No curly/smart quotes (" " ' ')
 - No bullet symbols other than plain hyphens (-)
@@ -157,7 +168,7 @@ Write the commit title and description to `.docs/COMMITS.md` in the project root
 The `\n\n---\n\n` separator (a blank line, a `---` rule, and another blank line) applies whenever a new entry is prepended to any `.md` file this skill writes to.
 
 Write both files by default.
-When called from publish-new-version, follow its Q4 selections -- only write the files the user selected.
+When called from publish-new-version, write only the files specified in the passed-in doc file list (all 3 if version was bumped/custom, changelog + commits only if version was kept).
 
 ## GitHub commit message
 
@@ -199,8 +210,6 @@ Scan the full output for every forbidden term before finishing:
 - [ ] Only the files selected in Q4 were written
 - [ ] If EXTENSION.md exists: name used as fallback for i18n placeholders; manifest.json version used (mismatch flagged if versions differ)
 - [ ] If standalone and version was bumped or set custom and CLAUDE.md exists: `- Version:` line in Manifest section updated to match
-- [ ] If standalone: Q1 and Q4 were asked before any work began; manifest.json updated per Q1
-- [ ] If invoked: Q1 and Q4 were NOT re-asked; passed values were used
-- [ ] Repo check only ran if at least one doc output was selected
-- [ ] Q5 only asked when: doc output selected AND repo found AND uncommitted files exist
-- [ ] Diff source matches Q5 answer (git diff HEAD if yes, git log if no or not asked)
+- [ ] If standalone: Q1 and Q4 were asked before any work began; manifest.json updated per Q1; repo check and Q5 ran as normal
+- [ ] If invoked: Q1, Q4, timestamp, and diffSource were NOT re-asked -- all passed values used directly; repo check and Q5 skipped entirely
+- [ ] Diff source is correct: git diff HEAD if diffSource="uncommitted" or Q5=yes; git log if diffSource="last-commit" or Q5=no/not asked
