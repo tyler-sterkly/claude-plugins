@@ -41,8 +41,28 @@ You can also browse and install interactively: run `/plugin`, open the **Discove
 |--------|-------------|
 | `sys-logo` | Design and iterate on logos using SVG |
 | `sys-svg` | Generate and edit SVG illustrations, icons, and graphics |
+| `sys-frontend` | Full UI design workflow with aesthetic direction and iteration |
+| `sys-web-audit` | Review interfaces against Vercel web design guidelines |
+
+<br>
+
+### Extension Dev
+
+| Plugin | Description |
+|--------|-------------|
+| `ext-audit` | Score an extension across MV3 compliance, security, architecture, and code quality |
+| `ext-changelog` | Public-facing changelog and commit message from diffs or version notes |
+| `ext-context` | Generate a CLAUDE.md documenting the extension's architecture and conventions |
+| `ext-duplicate` | Duplicate an existing extension template into a new instance |
 | `ext-icons` | Generate a full icon set and favicon from a single source icon |
-| `design-frontend-ui` | Full UI design workflow with aesthetic direction and iteration |
+| `ext-ids` | Generate and wire unique Chrome and Firefox extension IDs |
+| `ext-ingest` | Transform an extension ZIP into the standardized template structure |
+| `ext-md` | Create or update the EXTENSION.md identity file for a Firefox extension |
+| `ext-pnr` | Plan, findings, and progress tracking files for complex extension projects |
+| `ext-publish` | Package, document, and submit an extension to the store |
+| `ext-review` | Review an extension across code quality, security, AMO compliance, and performance |
+| `ext-verbiage` | Generate user-facing copy: manifest descriptions, listing summaries, keyword sets |
+| `ext-website` | Build a standalone brand site for an extension |
 
 <br>
 
@@ -51,10 +71,9 @@ You can also browse and install interactively: run `/plugin`, open the **Discove
 | Plugin | Description |
 |--------|-------------|
 | `ext-changelog` | Public-facing changelog and commit message from diffs or version notes |
-| `ext-md` | Creates or updates the EXTENSION.md identity file for a Firefox extension |
-| `gen-privacy` | GDPR/CCPA-ready privacy policy generator |
-| `gen-terms` | Terms of service generator |
-| `gen-deep-research` | Multi-source web research with adversarially verified, cited report |
+| `ext-legal` | GDPR/CCPA privacy policy and California-governed terms of service |
+| `ext-md` | Create or update the EXTENSION.md identity file for a Firefox extension |
+| `ext-verbiage` | Generate user-facing copy: manifest descriptions, listing summaries, keyword sets |
 
 <br>
 
@@ -62,13 +81,18 @@ You can also browse and install interactively: run `/plugin`, open the **Discove
 
 | Plugin | Description |
 |--------|-------------|
-| `sys-code-review` | Review PRs for bugs and compliance, posts findings as a PR comment |
+| `sys-catch` | Audit past conversations for missed improvements, log patterns to GOOD_CATCH.md |
+| `sys-code-review` | Review PRs for bugs and CLAUDE.md compliance, post findings as a PR comment |
+| `sys-commit` | Create properly formatted Git commits with safety checks before pushing |
+
+<br>
 
 ### Utilities
 
 | Plugin | Description |
 |--------|-------------|
-| `cc-terminal-title` | Live Windows Terminal title bar updates with real-time status icons as Claude works |
+| `sys-handoff` | Capture session context, progress, and blockers for resumption |
+| `sys-terminal` | Live Windows Terminal title updates with real-time Claude Code status |
 
 <br>
 <br>
@@ -82,6 +106,8 @@ After installing, invoke a skill with its slash command:
 /sys-svg
 /ext-changelog
 /sys-code-review
+/ext-audit
+/ext-review
 ```
 
 <br>
@@ -124,6 +150,87 @@ Generates and edits SVG files by hand - treating SVGs as code rather than export
 ---
 <br>
 
+### <ins>sys-frontend</ins>
+
+Full UI design workflow focused on distinctive, opinionated visual direction - not templated defaults.
+
+**Approach:**
+- Grounds every design in the actual subject matter: its materials, artifacts, vocabulary, and world. Generic choices are rejected in favour of choices that could only belong to this brief.
+- The hero is a thesis - opens with the most characteristic thing about the product, not a stock gradient and stat block.
+- Typography carries personality. Display and body faces are paired deliberately with a full type scale that is itself a memorable part of the design.
+- Takes one real aesthetic risk per design and justifies it.
+
+**Workflow:** Brainstorms a compact token system (color, type, layout, signature), critiques it against the brief before writing any code, then builds following the revised plan exactly. Runs a self-critique pass and accepts plain-language feedback for iteration rounds.
+
+<br>
+
+---
+<br>
+
+### <ins>sys-web-audit</ins>
+
+Reviews an interface against Vercel's web design guidelines across layout, typography, interaction, and accessibility.
+
+**Covers:** Visual hierarchy, spacing consistency, type scale and pairing, color contrast, interactive state coverage, motion and animation, responsive behaviour, and keyboard/screen reader accessibility.
+
+<br>
+
+---
+<br>
+
+### <ins>ext-audit</ins>
+
+Scores a Firefox extension across six axes and generates a detailed audit plan.
+
+**Axes:** MV3 compliance, security, architecture, correctness, code quality, performance.
+
+Each axis is scored independently. The output is a structured audit report with findings ranked by severity and an actionable remediation plan.
+
+<br>
+
+---
+<br>
+
+### <ins>ext-changelog</ins>
+
+Generates clean, public-facing changelogs and GitHub commit messages for browser extension releases.
+
+**What it reads:**
+- `manifest.json` - authoritative version source
+- `EXTENSION.md` - extension name and AMO slug (optional)
+- `_locales/en/messages.json` - resolves i18n name tokens
+- Git diff or a user-supplied list of changes
+
+**Output:**
+- A structured changelog entry with version heading, date, and categorised bullets (New, Improved, Fixed, Removed)
+- A GitHub commit title and body formatted for the release commit
+- Delivered as a `.md` file
+
+**Rules:** Never invents changes not present in the diff. Flags version mismatches between `manifest.json` and `EXTENSION.md`. Derives the extension name from locale files when the manifest uses `__MSG_extName__`.
+
+<br>
+
+---
+<br>
+
+### <ins>ext-context</ins>
+
+Generates a `CLAUDE.md` file documenting the extension's architecture, file structure, shared core logic, and development conventions. Run once when starting work on an unfamiliar extension so Claude has accurate project context from the first turn.
+
+<br>
+
+---
+<br>
+
+### <ins>ext-duplicate</ins>
+
+Duplicates an existing Firefox extension template into a new extension instance. Wires all placeholders, genericizes source brand identifiers, and produces a clean starting point ready for customization.
+
+<br>
+
+---
+<br>
+
 ### <ins>ext-icons</ins>
 
 Generates a complete browser-extension icon set from a single square source icon (SVG or PNG).
@@ -141,17 +248,18 @@ Generates a complete browser-extension icon set from a single square source icon
 ---
 <br>
 
-### <ins>design-frontend-ui</ins>
+### <ins>ext-ids</ins>
 
-Full UI design workflow focused on distinctive, opinionated visual direction - not templated defaults.
+Generates unique Chrome and Firefox extension IDs and wires them into `config.js` and `manifest.json`. Handles the format differences between the two platforms (Chrome's 32-char hash, Firefox's UUID with braces).
 
-**Approach:**
-- Grounds every design in the actual subject matter: its materials, artifacts, vocabulary, and world. Generic choices are rejected in favour of choices that could only belong to this brief.
-- The hero is a thesis - opens with the most characteristic thing about the product, not a stock gradient and stat block.
-- Typography carries personality. Display and body faces are paired deliberately with a full type scale that is itself a memorable part of the design.
-- Takes one real aesthetic risk per design and justifies it.
+<br>
 
-**Workflow:** Reads any existing project context (memory, prior designs, CLAUDE.md), designs the UI, critiques it against the brief, iterates, and delivers with a rationale for every non-obvious choice.
+---
+<br>
+
+### <ins>ext-ingest</ins>
+
+Transforms an extension ZIP file into the standardized BitBoxMedia template structure. Reads a reference extension to understand the target layout, then populates all configuration files (`manifest.json`, `config.js`, `_locales/`, etc.) from the source ZIP.
 
 <br>
 
@@ -183,35 +291,13 @@ Creates or updates the `EXTENSION.md` identity file for a Firefox MV3 browser ex
 ---
 <br>
 
-### <ins>ext-changelog</ins>
+### <ins>ext-legal</ins>
 
-Generates clean, public-facing changelogs and GitHub commit messages for browser extension releases.
+Generates a US (CCPA) + GDPR compliant privacy policy and a California-governed terms of service for a Firefox extension and its associated website.
 
-**What it reads:**
-- `manifest.json` - authoritative version source
-- `EXTENSION.md` - extension name and AMO slug (optional)
-- `_locales/en/messages.json` - resolves i18n name tokens
-- Git diff or a user-supplied list of changes
+**What it scans:** The extension directory - permissions in `manifest.json`, storage usage, cookie names, data collection patterns - to produce documents that accurately reflect what the extension actually does rather than a generic template.
 
-**Output:**
-- A structured changelog entry with version heading, date, and categorised bullets (New, Improved, Fixed, Removed)
-- A GitHub commit title and body formatted for the release commit
-- Delivered as a `.md` file
-
-**Rules:** Never invents changes not present in the diff. Flags version mismatches between `manifest.json` and `EXTENSION.md`. Derives the extension name from locale files when the manifest uses `__MSG_extName__`.
-
-<br>
-
----
-<br>
-
-### <ins>gen-privacy</ins>
-
-Generates a US + GDPR compliant privacy policy for a Firefox browser extension and its associated website.
-
-**What it scans:** The extension directory - permissions in `manifest.json`, storage usage, cookie names, data collection patterns - to produce a policy that accurately reflects what the extension actually does rather than a generic template.
-
-**Gathers:** Extension name, developer/company name, website domain, contact email, and output format (plain text, Markdown, or HTML). Can be called standalone or from `gen-terms` with context passed automatically.
+**Gathers:** Extension name, developer/company name, website domain, contact email, and output format (plain text, Markdown, or HTML). Called standalone or automatically from `ext-website` with context passed in.
 
 **Covers:** Data collected and why, storage and retention, third-party services, user rights (GDPR/CCPA), contact details, and effective date. California and EU law compliant.
 
@@ -220,33 +306,56 @@ Generates a US + GDPR compliant privacy policy for a Firefox browser extension a
 ---
 <br>
 
-### <ins>gen-terms</ins>
+### <ins>ext-pnr</ins>
 
-Generates terms of service for a Firefox browser extension and its website, governed by California law.
-
-**Scope:** Covers both the browser extension and the associated website in a single document - acceptable use, prohibited conduct, intellectual property, disclaimers, limitation of liability, termination, and governing law.
-
-**Gathers:** Same inputs as `gen-privacy` (extension dir, name, company, domain, email, format). Integrates automatically when called from `ext-website`.
-
-**Output:** A complete ToS document in plain text, Markdown, or HTML. Effective date calculated from the current date.
+Creates and maintains `task_plan.md`, `findings.md`, and `progress.md` tracking files for complex extension projects. Enables structured planning and session continuity across long or multi-session workstreams. Toggle with `/ext-pnr-on` and `/ext-pnr-off`.
 
 <br>
 
 ---
 <br>
 
-### <ins>gen-deep-research</ins>
+### <ins>ext-publish</ins>
 
-Multi-source research harness that fans out searches, fetches primary sources, adversarially verifies claims, and synthesizes a cited report.
+Handles the full extension publish workflow: version bump, packaging, documentation generation, placeholder scanning to catch unfilled config values, and multi-store submission support (AMO, Chrome Web Store).
 
-**Phases:**
-1. **Pre-flight** - If the question is underspecified (no budget, region, constraints), asks 2-3 clarifying questions before searching. Narrow questions produce better reports.
-2. **Search fan-out** - Runs 3-5 parallel searches from different angles: direct question, skeptical/opposing angle, adjacent context, primary sources (official docs, studies), and recent developments.
-3. **Source fetch** - Reads the full content of each source page and extracts key claims, data points, and citations.
-4. **Adversarial verification** - Each major claim is challenged from a skeptical angle. Claims that do not survive are flagged or dropped.
-5. **Synthesis** - Produces a structured report with inline citations, a confidence level per key claim, and a source list.
+<br>
 
-Minimum 6 distinct sources per report.
+---
+<br>
+
+### <ins>ext-review</ins>
+
+Comprehensive review of a Firefox extension across five dimensions: code quality, security, AMO policy compliance, performance, and architecture. Returns a structured report with severity-ranked findings and remediation guidance.
+
+<br>
+
+---
+<br>
+
+### <ins>ext-verbiage</ins>
+
+Generates user-facing copy for a Firefox extension following brand voice guidelines.
+
+**Output:** Manifest short and long descriptions, AMO listing summary, keyword sets for store search, and any other user-visible strings the extension needs.
+
+<br>
+
+---
+<br>
+
+### <ins>ext-website</ins>
+
+Builds a standalone brand site for a Firefox extension. Dark/light theme toggle, cookie banner, FormSubmit contact form, CCPA/GDPR privacy page and California terms of service (via `ext-legal`).
+
+<br>
+
+---
+<br>
+
+### <ins>sys-catch</ins>
+
+Audits past conversation transcripts for improvements that were missed or patterns that recur. Documents findings in `GOOD_CATCH.md` so the same issues do not repeat across sessions.
 
 <br>
 
@@ -273,26 +382,44 @@ Multi-agent PR review that runs 5 parallel reviewers, scores findings by confide
 ---
 <br>
 
-### <ins>cc-terminal-title</ins>
+### <ins>sys-commit</ins>
 
-Windows-native port of [claude-code-pulse](https://github.com/brianruggieri/claude-code-pulse) that updates the Windows Terminal title bar in real time as Claude works. Uses Win32 `SetWindowText` via a persistent PowerShell daemon instead of OSC escape sequences.
+Creates properly formatted Git commits with title/body rules, safety checks before pushing, and co-author tracking. Enforces project commit conventions and stops before push so the user can review.
+
+<br>
+
+---
+<br>
+
+### <ins>sys-handoff</ins>
+
+Captures current session context, progress, blockers, and next steps into a handoff file. Use at the end of a session so work can be resumed by the same or a different session without losing context.
+
+<br>
+
+---
+<br>
+
+### <ins>sys-terminal</ins>
+
+Windows-native Claude Code Pulse that updates the Windows Terminal title bar in real time as Claude works. Uses Win32 `SetWindowText` via a persistent PowerShell daemon.
 
 **Usage:** Run `ccp` instead of `claude` to start a session.
 
 **Title format:**
 ```
-github (main) | 💭 Thinking
-github (feat/auth) | ✅ Tests passed
-github | fix the login bug | 💾 Committed
+github (main) | Thinking
+github (feat/auth) | Tests passed
+github | fix the login bug | Committed
 ```
 
 **Status icons:** Thinking, Editing, Reading, Testing, Building, Installing, Pushing, Committed, Tests passed, Tests failed, Error, Browsing, Delegating, Monitoring, Idle.
 
-**Requirements:** Git Bash, jq, Claude Code CLI, powershell.exe, Windows Terminal.
+**Requirements:** Git Bash, jq (`winget install jqlang.jq`), Claude Code CLI, powershell.exe, Windows Terminal.
 
 **Installation:**
 ```bash
-bash /c/github/claude-code-pulse/install.sh
+bash ~/.local/share/ccp/install.sh
 source ~/.bashrc
 ccp "my task"
 ```
