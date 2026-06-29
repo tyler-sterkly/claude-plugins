@@ -18,14 +18,14 @@ Claude Code plugins by tyler-sterkly - skills for browser extension development,
 **Step 2 - Install Plugin:**
 
 ```
-/plugin install design-logo@tyler-sterkly-claude-plugins
+/plugin install sys-logo@tyler-sterkly-claude-plugins
 ```
 
 Or via the Claude Code CLI:
 
 ```bash
 claude plugin marketplace add tyler-sterkly/claude-plugins
-claude plugin install design-logo@tyler-sterkly-claude-plugins
+claude plugin install sys-logo@tyler-sterkly-claude-plugins
 ```
 
 You can also browse and install interactively: run `/plugin`, open the **Discover** tab, and press Enter on any plugin to choose your install scope (user, project, or local).
@@ -39,9 +39,9 @@ You can also browse and install interactively: run `/plugin`, open the **Discove
 
 | Plugin | Description |
 |--------|-------------|
-| `design-logo` | Design and iterate on logos using SVG |
-| `design-svg` | Generate and edit SVG illustrations, icons, and graphics |
-| `design-icon-set` | Generate a full icon set and favicon from a single source icon |
+| `sys-logo` | Design and iterate on logos using SVG |
+| `sys-svg` | Generate and edit SVG illustrations, icons, and graphics |
+| `ext-icons` | Generate a full icon set and favicon from a single source icon |
 | `design-frontend-ui` | Full UI design workflow with aesthetic direction and iteration |
 
 <br>
@@ -50,8 +50,8 @@ You can also browse and install interactively: run `/plugin`, open the **Discove
 
 | Plugin | Description |
 |--------|-------------|
-| `gen-changelog` | Public-facing changelog and commit message from diffs or version notes |
-| `gen-extension-md` | Creates or updates the EXTENSION.md identity file for a Firefox extension |
+| `ext-changelog` | Public-facing changelog and commit message from diffs or version notes |
+| `ext-md` | Creates or updates the EXTENSION.md identity file for a Firefox extension |
 | `gen-privacy` | GDPR/CCPA-ready privacy policy generator |
 | `gen-terms` | Terms of service generator |
 | `gen-deep-research` | Multi-source web research with adversarially verified, cited report |
@@ -62,7 +62,7 @@ You can also browse and install interactively: run `/plugin`, open the **Discove
 
 | Plugin | Description |
 |--------|-------------|
-| `code-review` | Review PRs for bugs and compliance, posts findings as a PR comment |
+| `sys-code-review` | Review PRs for bugs and compliance, posts findings as a PR comment |
 
 ### Utilities
 
@@ -78,10 +78,10 @@ You can also browse and install interactively: run `/plugin`, open the **Discove
 After installing, invoke a skill with its slash command:
 
 ```
-/design-logo
-/design-svg
-/gen-changelog
-/code-review
+/sys-logo
+/sys-svg
+/ext-changelog
+/sys-code-review
 ```
 
 <br>
@@ -89,7 +89,7 @@ After installing, invoke a skill with its slash command:
 
 ## Skill Reference
 
-### <ins>design-logo</ins>
+### <ins>sys-logo</ins>
 
 Design and iterate on logos using SVG, with structured phases from brief to exported PNGs.
 
@@ -104,7 +104,7 @@ Design and iterate on logos using SVG, with structured phases from brief to expo
 ---
 <br>
 
-### <ins>design-svg</ins>
+### <ins>sys-svg</ins>
 
 Generates and edits SVG files by hand - treating SVGs as code rather than exported blobs.
 
@@ -124,7 +124,7 @@ Generates and edits SVG files by hand - treating SVGs as code rather than export
 ---
 <br>
 
-### <ins>design-icon-set</ins>
+### <ins>ext-icons</ins>
 
 Generates a complete browser-extension icon set from a single square source icon (SVG or PNG).
 
@@ -134,7 +134,7 @@ Generates a complete browser-extension icon set from a single square source icon
 - `logo.svg` + `logo.png` - horizontal lockup with product name (when a name is provided)
 - `icon.svg` - source SVG preserved alongside the PNGs
 
-**How it works:** Orchestrates `design-svg` for SVG authoring when available, runs concept and approval gates before rendering, then places all output files in the Firefox extension layout convention (`icons/`). Supports custom output lists if the defaults do not fit.
+**How it works:** Orchestrates `sys-svg` for SVG authoring when available, runs concept and approval gates before rendering, then places all output files in the Firefox extension layout convention (`icons/`). Supports custom output lists if the defaults do not fit.
 
 <br>
 
@@ -158,7 +158,7 @@ Full UI design workflow focused on distinctive, opinionated visual direction - n
 ---
 <br>
 
-### <ins>gen-extension-md</ins>
+### <ins>ext-md</ins>
 
 Creates or updates the `EXTENSION.md` identity file for a Firefox MV3 browser extension in the BitBoxMedia suite. This file is the canonical identity reference for an extension and should be filled out before any other work begins.
 
@@ -183,7 +183,7 @@ Creates or updates the `EXTENSION.md` identity file for a Firefox MV3 browser ex
 ---
 <br>
 
-### <ins>gen-changelog</ins>
+### <ins>ext-changelog</ins>
 
 Generates clean, public-facing changelogs and GitHub commit messages for browser extension releases.
 
@@ -226,7 +226,7 @@ Generates terms of service for a Firefox browser extension and its website, gove
 
 **Scope:** Covers both the browser extension and the associated website in a single document - acceptable use, prohibited conduct, intellectual property, disclaimers, limitation of liability, termination, and governing law.
 
-**Gathers:** Same inputs as `gen-privacy` (extension dir, name, company, domain, email, format). Integrates automatically when called from `gen-website`.
+**Gathers:** Same inputs as `gen-privacy` (extension dir, name, company, domain, email, format). Integrates automatically when called from `ext-website`.
 
 **Output:** A complete ToS document in plain text, Markdown, or HTML. Effective date calculated from the current date.
 
@@ -253,7 +253,7 @@ Minimum 6 distinct sources per report.
 ---
 <br>
 
-### <ins>code-review</ins>
+### <ins>sys-code-review</ins>
 
 Multi-agent PR review that runs 5 parallel reviewers, scores findings by confidence, and posts results as a PR comment.
 
