@@ -1,0 +1,4 @@
+REPORT.md
+
+# Allow CLAUDE.md in plugin directories (global gitignore excludes CLAUDE.* by default)
+!plugins/**/CLAUDE.md
