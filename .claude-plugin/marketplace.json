@@ -208,6 +208,24 @@
       ]
     },
     {
+      "name": "sys-commit",
+      "source": "./plugins/sys-commit/",
+      "description": "Generates a git commit title and body, shows the user for approval, then commits. Works standalone (asks user for repo, diff source, or commit range) or invoked by another skill (receives title, body, repo path directly). Never pushes. Used by ext-changelog for the commit step.",
+      "version": "1.0.0",
+      "author": {
+        "name": "tyler-sterkly",
+        "url": "https://github.com/tyler-sterkly"
+      },
+      "homepage": "https://github.com/tyler-sterkly/claude-plugins",
+      "repository": "https://github.com/tyler-sterkly/claude-plugins",
+      "license": "MIT",
+      "keywords": ["git", "commit", "workflow", "changelog", "approval"],
+      "category": "workflows",
+      "skills": [
+        "./skills/sys-commit"
+      ]
+    },
+    {
       "name": "ext-pnr",
       "source": "./plugins/ext-pnr/",
       "description": "Automatically writes PLAN.md, REPORT.md, and timestamped PNR snapshots whenever a plan is presented. Toggle with /ext-pnr-on and /ext-pnr-off. State persists via PNR_ENABLED env var in settings.json.",
