@@ -1,6 +1,6 @@
 ---
 allowed-tools: Bash(gh issue view:*), Bash(gh search:*), Bash(gh issue list:*), Bash(gh pr comment:*), Bash(gh pr diff:*), Bash(gh pr view:*), Bash(gh pr list:*)
-name: code-review
+name: sys-sys-code-review
 description: Review a pull request for bugs and CLAUDE.md compliance using parallel agents, then post findings as a PR comment. Use when the user asks to review a PR, check a pull request, or run a code review. Always use this skill for PR review tasks even if the request seems simple.
 disable-model-invocation: false
 ---

@@ -1,4 +1,4 @@
-# code-review
+# sys-code-review
 
 Reviews a pull request for bugs and CLAUDE.md compliance using parallel agents, then posts findings as a PR comment.
 
