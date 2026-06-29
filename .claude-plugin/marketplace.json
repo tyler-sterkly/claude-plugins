@@ -208,6 +208,24 @@
       ]
     },
     {
+      "name": "ext-pnr",
+      "source": "./plugins/ext-pnr/",
+      "description": "Automatically writes PLAN.md, REPORT.md, and timestamped PNR snapshots whenever a plan is presented. Toggle with /ext-pnr-on and /ext-pnr-off. State persists via PNR_ENABLED env var in settings.json.",
+      "version": "1.0.0",
+      "author": {
+        "name": "tyler-sterkly",
+        "url": "https://github.com/tyler-sterkly"
+      },
+      "homepage": "https://github.com/tyler-sterkly/claude-plugins",
+      "repository": "https://github.com/tyler-sterkly/claude-plugins",
+      "license": "MIT",
+      "keywords": ["plan", "report", "pnr", "files", "workflow"],
+      "category": "workflows",
+      "skills": [
+        "./skills/ext-pnr"
+      ]
+    },
+    {
       "name": "code-review",
       "source": "./plugins/code-review/",
       "description": "Reviews a pull request for bugs and CLAUDE.md compliance using parallel agents, then posts findings as a PR comment.",
