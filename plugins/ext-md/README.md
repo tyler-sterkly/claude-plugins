@@ -1,4 +1,4 @@
-# gen-extension-md
+# ext-md
 
 Creates or updates the `EXTENSION.md` identity file for a Firefox MV3 browser extension in the BitBoxMedia suite. `EXTENSION.md` is the canonical identity reference for an extension and should be filled out completely before any other work begins.
 
@@ -46,4 +46,4 @@ A completed `EXTENSION.md` file in the project root with these sections:
 
 ## Related skills
 
-- `gen-changelog` - generates changelogs and commit messages for extension releases
+- `ext-changelog` - generates changelogs and commit messages for extension releases

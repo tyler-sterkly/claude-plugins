@@ -1,5 +1,5 @@
 ---
-name: gen-extension-md
+name: ext-md
 description: Creates or updates the EXTENSION.md identity file for a Firefox MV3 browser extension in the BitBoxMedia suite. Use when the user asks to create, generate, fill out, or update an EXTENSION.md file for an extension. Also triggers when setting up a new extension or when EXTENSION.md is missing or incomplete.
 allowed-tools: Read, Bash, Edit, Write, Glob
 ---
