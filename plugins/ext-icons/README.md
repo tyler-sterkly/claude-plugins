@@ -1,4 +1,4 @@
-# design-icon-set
+# ext-icons
 
 Generate a complete icon set from a single square source icon, a multi-size Windows `favicon.ico`, and an optional matching logo lockup (`logo.svg` + `logo.png`).
 
@@ -124,13 +124,13 @@ Every SVG this skill produces must have:
 ## Edge cases and limitations
 
 - After 3 rounds of rejected icon concepts, the skill stops and asks for more specific direction
-- If `design-svg` is installed, SVG authoring is delegated to it. If not, SVGs are authored inline.
+- If `sys-svg` is installed, SVG authoring is delegated to it. If not, SVGs are authored inline.
 - Logo matching an existing asset: the skill checks how the existing logo is sized in CSS/markup and matches the aspect ratio so nothing distorts
 - The `favicon.ico` must be confirmed to contain all three resolutions after generation
 - Previews use ImageMagick-rendered PNGs, not a `preview.html` workflow (Windows compatible)
 
 ## Related skills
 
-- `design-svg`: SVG authoring engine used internally by this skill
-- `design-logo`: Standalone logo design with more iteration depth
+- `sys-svg`: SVG authoring engine used internally by this skill
+- `sys-logo`: Standalone logo design with more iteration depth
 - `design-frontend-ui`: Full frontend UI design

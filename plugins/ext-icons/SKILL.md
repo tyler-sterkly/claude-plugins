@@ -1,5 +1,5 @@
 ---
-name: design-icon-set
+name: ext-icons
 description: Generate a full icon set from a single square source icon, a multi-size Windows favicon.ico, and an optional matching logo (logo.svg + logo.png) when a product name is available. Use this skill whenever the user asks to generate icons, create an icon set, produce favicon and PNG sizes, convert an icon to multiple sizes, build a favicon, or build a logo/logo lockup for an extension. Triggers when the user attaches an SVG or PNG and wants multiple icon sizes out, or mentions favicon, icon16, icon32, icon48, icon128, any icon size set, or a logo. Always use this skill for icon generation tasks even if the request seems simple.
 ---
 
@@ -12,23 +12,23 @@ Generate a complete icon set, a Windows favicon, and (optionally) a matching log
 - Use lowercase with no spaces. Examples: `icon16.png`, `icon32.png`, `icon48.png`, `icon64.png`, `icon128.png`, `icon.svg`, `favicon.ico`, `logo.svg`, `logo.png`.
 - If the user supplies a custom output list, use the names they give (lowercased).
 
-## SVG authoring engine (tyler-sterkly-claude-plugins:design-svg)
+## SVG authoring engine (tyler-sterkly-claude-plugins:sys-svg)
 
 The SVG files this skill produces -- the source icon (`icons/icon.svg`) and the logo lockup
-(`icons/logo.svg`) -- are authored by the **design-svg** skill when it is
-available. design-icon-set orchestrates: it gathers requirements, runs the concept/approval gates,
+(`icons/logo.svg`) -- are authored by the **sys-svg** skill when it is
+available. ext-icons orchestrates: it gathers requirements, runs the concept/approval gates,
 then renders the PNG sizes, the favicon, and `logo.png`, and places files per the Firefox
 conventions in this skill.
 
-- **When `design-svg` is installed:** invoke `Skill(tyler-sterkly-claude-plugins:design-svg)` to author each SVG.
-  Install it with `/plugin install design-svg@tyler-sterkly-claude-plugins`. Confirm the exact skill name against the live
+- **When `sys-svg` is installed:** invoke `Skill(tyler-sterkly-claude-plugins:sys-svg)` to author each SVG.
+  Install it with `/plugin install sys-svg@tyler-sterkly-claude-plugins`. Confirm the exact skill name against the live
   skills list before calling.
 - **Soft fallback:** if the plugin/skill is not available, author the SVGs inline using the rules
   already written into Step 1 and Step 4. Never block on the plugin -- the skill must still work
   without it.
 
-**Constraints to pass into `design-svg` on every hand-off** (design-icon-set owns these; they take
-precedence over design-svg defaults):
+**Constraints to pass into `sys-svg` on every hand-off** (ext-icons owns these; they take
+precedence over sys-svg defaults):
 - Source icon: square **128x128** canvas, legible at 16px.
 - Logo: horizontal lockup (icon on the left, wordmark on the right), **~5:1** ratio -- or match an
   existing asset's aspect ratio when replacing one.
@@ -39,11 +39,11 @@ precedence over design-svg defaults):
   of a logo that "shows as text only" in some viewers.)
 - For colored logos, also produce a dark-background variant (`logo-dark.svg`).
 
-**Previews and approval stay in this skill, not in design-svg.** Use design-icon-set's inline
-rendered-PNG montages (ImageMagick) for all concept/variant previews. Do **not** use design-svg's
+**Previews and approval stay in this skill, not in sys-svg.** Use ext-icons's inline
+rendered-PNG montages (ImageMagick) for all concept/variant previews. Do **not** use sys-svg's
 `preview.html` + `open`/`xdg-open` workflow -- it is macOS/Linux and does not work on Windows.
 
-**Design-rule tension.** design-svg discourages gradients and drop-shadows in logos; treat that as
+**Design-rule tension.** sys-svg discourages gradients and drop-shadows in logos; treat that as
 guidance and defer to explicit user design choices (e.g. an approved gradient pill).
 
 ## Step 0 -- Read EXTENSION.md (if present)
@@ -72,9 +72,9 @@ The SVG is the single source of truth for all rendered files.
 
 ### Icon concept generation (no source provided)
 
-**Author the concept SVGs with `design-svg` when available** (see "SVG authoring engine"): pass it
-the four directions and rules below. design-icon-set still renders the previews and runs the
-approval gate. If design-svg is unavailable, author the concepts inline per these same rules.
+**Author the concept SVGs with `sys-svg` when available** (see "SVG authoring engine"): pass it
+the four directions and rules below. ext-icons still renders the previews and runs the
+approval gate. If sys-svg is unavailable, author the concepts inline per these same rules.
 
 Using the product/extension name and any purpose info available, produce 4 distinct 128x128 SVG concepts and display them inline so the user can see all four before choosing.
 
@@ -124,11 +124,11 @@ Always produce a `favicon.ico`. This step is mandatory -- do it even when the us
 
 Always generate a horizontal logo lockup when a product/extension name is available. Build the logo only after the icon is approved -- it reuses the chosen icon art. If the user provides logo rules or style preferences upfront, follow them. If not, proceed with the default flow below.
 
-**Author `icons/logo.svg` with `design-svg` when available** (see "SVG authoring engine"), drawing
-on its logo ideation and category-diversity guidance for the style step. design-icon-set keeps the
+**Author `icons/logo.svg` with `sys-svg` when available** (see "SVG authoring engine"), drawing
+on its logo ideation and category-diversity guidance for the style step. ext-icons keeps the
 inline-PNG variant previews and the approval gate, and still vectorizes the wordmark with
 `fonttools` (see "Convert the wordmark to vector paths" below) so the result has no `<text>`. If
-design-svg is unavailable, author the lockup inline per the flow below.
+sys-svg is unavailable, author the lockup inline per the flow below.
 
 ### Layout
 
