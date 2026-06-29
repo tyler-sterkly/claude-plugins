@@ -1,4 +1,4 @@
-# design-logo
+# sys-logo
 
 Design and iterate on logos using SVG. Generates side-by-side previews and exports to PNG at standard sizes. Optionally integrates the final logo into a project repo.
 
@@ -121,6 +121,6 @@ logos/
 
 ## Related skills
 
-- `design-icon-set`: Generates the full icon set (PNG sizes + favicon.ico) from a final icon SVG
-- `design-svg`: SVG authoring engine
+- `ext-icons`: Generates the full icon set (PNG sizes + favicon.ico) from a final icon SVG
+- `sys-svg`: SVG authoring engine
 - `design-frontend-ui`: Full frontend UI design

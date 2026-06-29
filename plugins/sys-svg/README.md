@@ -1,4 +1,4 @@
-# design-svg
+# sys-svg
 
 Generates and edits SVG logos, icons, and graphics by writing SVG as code. Covers path commands, shape primitives, styling, accessibility, gradients, masks, sprites, optimization, and animation.
 
@@ -113,12 +113,12 @@ The only skip for the clarification step: when the user has specified both a con
 
 ## Edge cases and limitations
 
-- The preview.html workflow for logos uses `open` (macOS) or `xdg-open` (Linux). It does not work on Windows. On Windows, use `design-icon-set`'s ImageMagick-based preview instead.
-- When called from `design-icon-set`, previews and approval gates stay in that skill, not here.
-- When `design-icon-set` passes constraints (128x128 canvas, no `<text>` in logos), those take precedence over this skill's defaults.
+- The preview.html workflow for logos uses `open` (macOS) or `xdg-open` (Linux). It does not work on Windows. On Windows, use `ext-icons`'s ImageMagick-based preview instead.
+- When called from `ext-icons`, previews and approval gates stay in that skill, not here.
+- When `ext-icons` passes constraints (128x128 canvas, no `<text>` in logos), those take precedence over this skill's defaults.
 
 ## Related skills
 
-- `design-icon-set`: Orchestrates icon set generation and calls this skill for SVG authoring
-- `design-logo`: Standalone logo design with full interview/explore/refine/export flow
+- `ext-icons`: Orchestrates icon set generation and calls this skill for SVG authoring
+- `sys-logo`: Standalone logo design with full interview/explore/refine/export flow
 - `design-frontend-ui`: Full frontend UI design

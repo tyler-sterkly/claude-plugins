@@ -1,5 +1,5 @@
 ---
-name: design-logo
+name: sys-logo
 description: |
   Design and iterate on logos using SVG. Use this skill when the user asks to
   "create a logo", "design a logo", "make me a logo", "iterate on this logo",

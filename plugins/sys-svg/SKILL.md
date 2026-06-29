@@ -1,5 +1,5 @@
 ---
-name: design-svg
+name: sys-svg
 description: Generates and edits SVG logos, icons, and graphics. Use when creating SVG files, designing logos or icons, writing path data, optimizing SVGs, building icon systems, animating SVG elements, or modifying existing vector graphics. Covers path commands, shape primitives, styling, accessibility, gradients, masks, sprites, optimization, and animation (CSS keyframes, GPU acceleration, staggering, easing, SVG-specific techniques).
 ---
 
@@ -177,7 +177,7 @@ When creating logos (not icons), follow this process:
     1. Copy this skill's `assets/preview.html` to the project directory using `cp` with the absolute path from where this skill was loaded (do not read or modify the file).
     2. Design the first logo and write its SVG file.
     3. Write `variants.js` with just that first variant (format in [references/editing-workflow.md](references/editing-workflow.md)).
-    4. Open the preview with `open preview.html` (macOS) or `xdg-open preview.html` (Linux). The user now sees the first logo while you keep working.
+    4. Tell the user to open `preview.html` in their browser. The user now sees the first logo while you keep working.
     5. For each subsequent logo: write the SVG file, then update `variants.js` to add it. The preview auto-reloads both every 3 seconds, so new logos appear in the browser as they're completed.
 
     This gives the user visual feedback within seconds of the first logo being ready, rather than waiting for all logos to be designed before seeing anything.

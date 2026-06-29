@@ -87,6 +87,6 @@ Where the brief leaves an axis free, don't default to one of these.
 
 ## Related skills
 
-- `design-logo`: Logo design and SVG export
-- `design-svg`: SVG authoring and path work
-- `design-icon-set`: Icon set generation for extensions
+- `sys-logo`: Logo design and SVG export
+- `sys-svg`: SVG authoring and path work
+- `ext-icons`: Icon set generation for extensions
