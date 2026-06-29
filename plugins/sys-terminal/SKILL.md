@@ -1,11 +1,11 @@
 ---
-name: cc-terminal-title
-description: "Claude Code Pulse for Windows (cc-terminal-title): live terminal title manager that shows real-time status in Windows Terminal as Claude works. Use when the user asks about terminal titles, ccp, cc-terminal-title, or live status updates in the title bar. Also use proactively when the user asks how to start Claude Code with a descriptive title."
+name: sys-terminal
+description: "Claude Code Pulse for Windows (sys-terminal): live terminal title manager that shows real-time status in Windows Terminal as Claude works. Use when the user asks about terminal titles, ccp, sys-terminal, or live status updates in the title bar. Also use proactively when the user asks how to start Claude Code with a descriptive title."
 user-invocable: true
 allowed-tools: "Bash"
 ---
 
-# cc-terminal-title — Claude Code Pulse for Windows
+# sys-terminal — Claude Code Pulse for Windows
 
 `winccp` is a Windows-native wrapper around `claude` that updates the Windows Terminal title bar in real time as Claude works.
 
@@ -71,7 +71,7 @@ Any flag not consumed by ccp is forwarded to `claude` directly.
 ## Installation
 
 ```bash
-bash /c/github/claude-code-pulse/install.sh
+bash ~/.local/share/ccp/install.sh
 # Then restart terminal or: source ~/.bashrc
 ```
 
@@ -104,4 +104,5 @@ Run `source ~/.bashrc` or restart the terminal after install.
 
 ## Source
 
-`C:\github\claude-code-pulse\`
+Upstream: `github.com/brianruggieri/claude-code-pulse` (rebuilt for Windows)
+Installed: `~/.local/share/ccp/`
