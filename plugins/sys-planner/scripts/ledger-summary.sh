@@ -22,9 +22,12 @@ LAST_TS=0
 
 for lf in "${PLAN_DIR}"/ledger-*.jsonl; do
     [ -f "$lf" ] || continue
+    lf_count=$(wc -l < "$lf" 2>/dev/null | tr -d '[:space:]')
+    lf_count=${lf_count:-0}
+    TOTAL=$((TOTAL + lf_count))
+    # parse only the last 100 entries for field extraction
     while IFS= read -r line; do
         [ -z "$line" ] && continue
-        TOTAL=$((TOTAL + 1))
         TYPE=$(printf "%s" "$line" | sed 's/.*"type":"\([^"]*\)".*/\1/')
         TS=$(printf "%s" "$line" | sed 's/.*"ts":\([0-9]*\).*/\1/')
         case "$TYPE" in
@@ -37,7 +40,9 @@ for lf in "${PLAN_DIR}"/ledger-*.jsonl; do
                 fi
                 ;;
         esac
-    done < "$lf"
+    done <<EOF
+$(tail -100 "$lf")
+EOF
 done
 
 printf "ledger events: %d total, %d phase updates, %d errors\n" "$TOTAL" "$PHASE_UPDATES" "$ERRORS"

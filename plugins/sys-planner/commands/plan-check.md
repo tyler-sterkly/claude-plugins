@@ -4,7 +4,7 @@ Steps:
 
 1. Run PowerShell to find all PLAN.md files nested inside a .plans directory under C:\github\:
    ```powershell
-   Get-ChildItem "C:\github" -Recurse -Filter "PLAN.md" -ErrorAction SilentlyContinue |
+   Get-ChildItem "C:\github" -Recurse -Depth 6 -Filter "PLAN.md" -ErrorAction SilentlyContinue |
      Where-Object { $_.FullName -like '*\.plans*' }
    ```
 
@@ -41,7 +41,7 @@ Steps:
 
 6. On "y":
    - For each completed plan directory, delete: PLAN.md, REPORT.md, FINDINGS.md, PROGRESS.md
-   - If .plans\.active_plan exists and points to a slug whose directory is now empty of plan files, delete .active_plan
+   - If .plans\.active_plan exists and points to a slug whose PLAN.md no longer exists, delete .active_plan
    - Print exactly what was deleted, one file per line
    - Do not delete: .cache\, .mode, .attestation, .nonce, .stop_blocks, ledger-*.jsonl, or the directory itself
 

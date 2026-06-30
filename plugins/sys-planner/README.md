@@ -63,7 +63,7 @@ Gated mode requires Claude Code. Other platforms degrade to advisory or notifica
 ## Checking status
 
 ```bash
-cat .plans/.mode          # mode: "autonomous gate" / "autonomous" / absent = interactive
+cat .plans/.mode          # "autonomous gate" = gated, "autonomous" = autonomous, absent = interactive
 cat .plans/.stop_blocks   # gate block count
 sh scripts/check-complete.sh  # phase advisory
 ```

@@ -1,6 +1,6 @@
 # Progress: [Plan Title]
 
-## Session: [DATE]
+## Session: YYYY-MM-DD hh:mm AM/PM PST
 
 ### [Phase 1]: [Phase Title]
 - **Status:** in_progress

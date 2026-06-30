@@ -12,37 +12,10 @@ for arg in "$@"; do
 done
 
 GATE_CAP="${PWF_GATE_CAP:-20}"
-SLUG_RE='^[A-Za-z0-9_][A-Za-z0-9._-]*$'
-
-# Resolve plan dir (inline copy of resolve-plan-dir.sh logic)
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd 2>/dev/null)" || SCRIPT_DIR="."
-PLAN_DIR=""
 
-if [ -n "${PLAN_ID:-}" ] && printf "%s" "$PLAN_ID" | grep -Eq "$SLUG_RE" && [ -d ".plans/${PLAN_ID}" ]; then
-    PLAN_DIR=".plans/${PLAN_ID}"
-fi
-if [ -z "$PLAN_DIR" ] && [ -f ".plans/.active_plan" ]; then
-    AP=$(tr -d '\r\n[:space:]' < ".plans/.active_plan" 2>/dev/null)
-    if [ -n "$AP" ] && printf "%s" "$AP" | grep -Eq "$SLUG_RE" && [ -d ".plans/${AP}" ]; then
-        PLAN_DIR=".plans/${AP}"
-    fi
-fi
-if [ -z "$PLAN_DIR" ] && [ -d ".plans" ]; then
-    NEWEST=""; NEWEST_MT=0
-    for d in .plans/*/; do
-        [ -d "$d" ] || continue
-        d="${d%/}"; n=$(basename "$d")
-        case "$n" in .*) continue ;; esac
-        printf "%s" "$n" | grep -Eq "$SLUG_RE" || continue
-        [ -f "$d/PLAN.md" ] || continue
-        m=$(stat -c '%Y' "$d" 2>/dev/null || stat -f '%m' "$d" 2>/dev/null || echo 0)
-        if [ "$m" -gt "$NEWEST_MT" ] 2>/dev/null; then NEWEST_MT="$m"; NEWEST="$d"; fi
-    done
-    [ -n "$NEWEST" ] && PLAN_DIR="${NEWEST%/}"
-fi
-if [ -z "$PLAN_DIR" ] && [ -f ".plans/PLAN.md" ]; then
-    PLAN_DIR=".plans"
-fi
+# Resolve plan dir
+PLAN_DIR=$(sh "${SCRIPT_DIR}/resolve-plan-dir.sh" 2>/dev/null)
 
 if [ -z "$PLAN_DIR" ]; then
     [ "$GATE_MODE" = "1" ] && echo '{"decision":"continue"}' && exit 0
@@ -56,7 +29,7 @@ GATE_LEDGER_FILE="${PLAN_DIR}/.gate_last_ledger"
 
 # Guard 1: mode must be gated
 if [ "$GATE_MODE" = "1" ]; then
-    if [ ! -f "$MODE_FILE" ] || ! grep -q 'gate' "$MODE_FILE" 2>/dev/null; then
+    if [ ! -f "$MODE_FILE" ] || ! grep -qi 'gate' "$MODE_FILE" 2>/dev/null; then
         echo '{"decision":"continue"}'
         exit 0
     fi
@@ -68,14 +41,14 @@ if [ ! -f "$PLAN_FILE" ]; then
     exit 0
 fi
 
-IN_PROGRESS=$(grep -c 'Status:.*in_progress' "$PLAN_FILE" 2>/dev/null || echo 0)
-COMPLETE=$(grep -c 'Status:.*complete' "$PLAN_FILE" 2>/dev/null || echo 0)
-PENDING=$(grep -c 'Status:.*pending' "$PLAN_FILE" 2>/dev/null || echo 0)
-IN_PROGRESS_PHASE=$(grep -m1 'Status:.*in_progress' "$PLAN_FILE" 2>/dev/null | sed 's/.*Status:.*//' | head -1 || true)
+IN_PROGRESS=$(grep -ci 'Status:.*in_progress' "$PLAN_FILE" 2>/dev/null || echo 0)
+COMPLETE=$(grep -ci 'Status:.*complete' "$PLAN_FILE" 2>/dev/null || echo 0)
+PENDING=$(grep -ci 'Status:.*pending' "$PLAN_FILE" 2>/dev/null || echo 0)
+IN_PROGRESS_PHASE=$(grep -im1 'Status:.*in_progress' "$PLAN_FILE" 2>/dev/null | sed 's/.*Status:.*//' | head -1 || true)
 
 # Advisory output
 echo "[sys-planner] Phase status: ${IN_PROGRESS} in_progress, ${COMPLETE} complete, ${PENDING} pending"
-[ -n "$IN_PROGRESS_PHASE" ] && echo "[sys-planner] Active phase: $(grep -B5 'Status:.*in_progress' "$PLAN_FILE" 2>/dev/null | grep '^###' | tail -1 | sed 's/^### //')"
+[ -n "$IN_PROGRESS_PHASE" ] && echo "[sys-planner] Active phase: $(grep -iB5 'Status:.*in_progress' "$PLAN_FILE" 2>/dev/null | grep '^###' | tail -1 | sed 's/^### //')"
 
 # Guard 2: must have an in_progress phase to block
 if [ "$GATE_MODE" != "1" ] || [ "$IN_PROGRESS" = "0" ] 2>/dev/null; then
@@ -121,7 +94,7 @@ NEW_BLOCKS=$((BLOCKS + 1))
 printf "%s\n" "$NEW_BLOCKS" > "$BLOCKS_FILE" 2>/dev/null
 printf "%s\n" "$LEDGER_LINES" > "$GATE_LEDGER_FILE" 2>/dev/null
 
-ACTIVE_PHASE=$(grep -B5 'Status:.*in_progress' "$PLAN_FILE" 2>/dev/null | grep '^###' | tail -1 | sed 's/^### //' || echo "unknown phase")
+ACTIVE_PHASE=$(grep -iB5 'Status:.*in_progress' "$PLAN_FILE" 2>/dev/null | grep '^###' | tail -1 | sed 's/^### //' || echo "unknown phase")
 echo "[sys-planner] Gate blocking stop — '${ACTIVE_PHASE}' is in_progress. Block ${NEW_BLOCKS}/${GATE_CAP}."
 printf '{"decision":"block","reason":"Phase \"%s\" is still in_progress. Complete it or update PLAN.md before stopping. (block %d/%d)"}\n' \
     "$ACTIVE_PHASE" "$NEW_BLOCKS" "$GATE_CAP"
