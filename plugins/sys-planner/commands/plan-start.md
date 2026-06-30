@@ -1,14 +1,18 @@
 Start a named planning session. Creates a .plans\<slug>\ directory, sets it as the active plan, and optionally enables gated or autonomous mode.
 
-Usage: /plan-start <name> [--gated | --autonomous]
+Usage: /plan-start [name] [--gated | --autonomous]
 
 Examples:
   /plan-start Build Pipeline --gated
   /plan-start Auth Refactor
   /plan-start FF Extension Search
+  /plan-start --gated
+  /plan-start
 
 Steps:
 1. Take everything before the flag (or the full input if no flag) as the plan name.
+   If no name is given, init-session.sh auto-generates a two-word slug from a built-in
+   wordlist (e.g. sleepy-biscuit, fluffy-loaf). Skip step 2.
 2. Derive the slug: lowercase, replace non-alphanumeric with hyphens, collapse consecutive hyphens, trim leading/trailing hyphens.
    "Build Pipeline" -> "build-pipeline"
    "FF Extension Search" -> "ff-extension-search"

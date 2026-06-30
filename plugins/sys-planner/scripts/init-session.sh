@@ -18,18 +18,23 @@ for arg in "$@"; do
     esac
 done
 
-# Derive slug from name
+# Derive slug from name, or auto-generate one
 if [ -n "$NAME" ]; then
     SLUG=$(printf "%s" "$NAME" \
         | tr '[:upper:]' '[:lower:]' \
         | sed 's/[^a-z0-9]/-/g' \
         | sed 's/--*/-/g' \
         | sed 's/^-//; s/-$//')
-    PLAN_DIR=".plans/${SLUG}"
 else
-    PLAN_DIR=".plans"
-    SLUG=""
+    SLUG=$(awk 'BEGIN{
+        srand()
+        split("fluffy sleepy purring whiskered fuzzy nimble curious cozy silky playful velvet striped sneaky bouncy zoomie feral chaotic smol tiny nya baka kawaii sugoi chibi doki", adj, " ")
+        split("whisker mittens biscuit mochi floof kitten napper purrbox catnip pawbean tabby yawn loaf scruff socks mrow boi dayo gremlin void chan senpai nani ara neko", nou, " ")
+        print adj[int(rand()*25)+1] "-" nou[int(rand()*25)+1]
+    }' 2>/dev/null)
+    [ -z "$SLUG" ] && SLUG="plan-$(date '+%m%d-%H%M' 2>/dev/null || echo 'unnamed')"
 fi
+PLAN_DIR=".plans/${SLUG}"
 
 # Create directories
 mkdir -p "${PLAN_DIR}" 2>/dev/null || { echo "[sys-planner] Error: cannot create ${PLAN_DIR}"; exit 1; }
@@ -65,13 +70,9 @@ rm -f "${PLAN_DIR}/.gate_last_ledger" 2>/dev/null
 # Remove stale attestation (plan may have changed since last session)
 rm -f "${PLAN_DIR}/.attestation" 2>/dev/null
 
-# Set .active_plan pointer for named plans
-if [ -n "$SLUG" ]; then
-    printf "%s\n" "$SLUG" > ".plans/.active_plan"
-    echo "[sys-planner] Active plan: ${SLUG}  ->  ${PLAN_DIR}/"
-else
-    echo "[sys-planner] Plan directory: ${PLAN_DIR}/"
-fi
+# Set .active_plan pointer
+printf "%s\n" "$SLUG" > ".plans/.active_plan"
+echo "[sys-planner] Active plan: ${SLUG}  ->  ${PLAN_DIR}/"
 
 # Copy templates if plan files don't exist yet
 TEMPLATES_DIR="${PLAN_DIR}"
