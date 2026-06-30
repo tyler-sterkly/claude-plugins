@@ -72,6 +72,8 @@ All files live in `.plans/` inside the relevant project directory. The directory
 
 - `/plan-arm` — enable PNR (sets PNR_ENABLED=true in settings.json)
 - `/plan-disarm` — disable PNR (sets PNR_ENABLED=false in settings.json)
+- `/plan-start <name> [--gated|--autonomous]` — start a named plan session
+- `/plan-switch` — list named plans and switch the active one
 - `/plan-status` — print current phase progress inline
 - `/plan-check` — cross-project plan table; prompts to delete completed plans
 - `/plan-attest` — fingerprint PLAN.md; hooks will reject it if it changes unexpectedly

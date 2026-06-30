@@ -32,6 +32,8 @@ That is it for interactive use. No init step required.
 
 - `/plan-arm` — enable PNR (sets PNR_ENABLED=true in settings.json; run once per machine)
 - `/plan-disarm` — disable PNR (sets PNR_ENABLED=false; silences all writing and injection)
+- `/plan-start <name> [--gated|--autonomous]` — start a named plan in its own .plans\<slug>\ directory
+- `/plan-switch` — list named plans and switch which one is active
 - `/plan-status` — print phase progress for the active plan
 - `/plan-check` — cross-project overview of all plans; prompts to delete completed ones
 - `/plan-attest` — fingerprint PLAN.md (required for gated/autonomous mode)

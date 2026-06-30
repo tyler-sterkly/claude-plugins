@@ -91,9 +91,11 @@ You can also browse and install interactively: run `/plugin`, open the **Discove
 
 | Plugin | Description |
 |--------|-------------|
+| `sys-context-tuner` | Analyze recent conversations and suggest improvements to CLAUDE.md files |
 | `sys-handoff` | Capture session context, progress, and blockers for resumption |
 | `sys-optiprompt` | On-demand prompt rewriter — append `--optimize` to any prompt to get a cleaner version before Claude acts |
 | `sys-planner` | PNR-integrated persistent planning system — keeps PLAN.md in Claude's attention every turn, with gated mode for long-running tasks |
+| `sys-context-clone` | Clone the current conversation to branch off or trim context (`/clone` and `/clone-half`) |
 | `sys-terminal` | Live Windows Terminal title updates with real-time Claude Code status |
 
 <br>
@@ -441,6 +443,8 @@ PNR-integrated persistent planning system. Keeps your plan in Claude's attention
 **Slash commands:**
 - `/plan-arm` — enable PNR (sets PNR_ENABLED=true; run once per machine)
 - `/plan-disarm` — disable PNR (sets PNR_ENABLED=false)
+- `/plan-start <name> [--gated|--autonomous]` — start a named plan in its own directory
+- `/plan-switch` — list named plans and switch the active one
 - `/plan-status` — print phase progress for the active plan
 - `/plan-check` — cross-project overview of all plans; prompts to delete completed ones
 - `/plan-attest` — SHA-256 fingerprint PLAN.md (required for gated/autonomous mode)
@@ -483,6 +487,52 @@ github | fix the login bug | Committed
 bash ~/.local/share/ccp/install.sh
 source ~/.bashrc
 ccp "my task"
+```
+
+<br>
+
+---
+<br>
+
+### <ins>sys-context-tuner</ins>
+
+Analyzes your recent Claude Code conversations and suggests improvements to your `CLAUDE.md` files. Run periodically to keep your instructions sharp based on how sessions actually went.
+
+**What it surfaces:**
+- Instructions that were violated and need stronger wording
+- Patterns worth adding to the local (project) `CLAUDE.md`
+- Patterns worth adding to the global `~/.claude/CLAUDE.md`
+- Items that appear outdated or no longer relevant
+
+**How it works:** Spawns parallel Sonnet subagents batched by file size, each analyzing conversations against both CLAUDE.md files. Presents findings before touching anything — asks before drafting any edits.
+
+**Requirements:** `jq` must be installed.
+
+<br>
+
+---
+<br>
+
+### <ins>sys-context-clone</ins>
+
+Two conversation cloning commands for branching off or shedding early context.
+
+**Commands:**
+- `/clone` — full clone, all history preserved. Shows a preview with key highlights and asks for confirmation before cloning.
+- `/clone-half` — partial clone, keeps a configurable percentage of the conversation from the end (default 50%, range 10-90%). Shows the cut point and summary before cloning.
+
+```
+/clone-half        → keep last 50%
+/clone-half 30     → keep last 30%
+/clone-half 75     → keep last 75%
+```
+
+After either command, use `claude -r` to find the cloned conversation marked with `[CLONED <timestamp>]` or `[HALF-CLONE <timestamp>]`.
+
+**Requirements:** `jq` must be installed. Shell scripts must be executable after install:
+
+```bash
+chmod +x ~/.claude/plugins/cache/*/sys-context-clone/*/scripts/*.sh
 ```
 
 <br>
