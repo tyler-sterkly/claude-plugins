@@ -260,6 +260,24 @@
       "skills": [
         "./skills/code-review"
       ]
+    },
+    {
+      "name": "sys-planner",
+      "source": "./plugins/sys-planner/",
+      "description": "PNR-integrated persistent planning system. Keeps PLAN.md, FINDINGS.md, and PROGRESS.md in a project-specific .plans\\ directory and injects plan context automatically on every turn. Gated on PNR_ENABLED=true — no slash command needed. Use /plan-status, /plan-attest, /plan-goal, and /plan-loop for long-running tasks.",
+      "version": "1.0.0",
+      "author": {
+        "name": "tyler-sterkly",
+        "url": "https://github.com/tyler-sterkly"
+      },
+      "homepage": "https://github.com/tyler-sterkly/claude-plugins",
+      "repository": "https://github.com/tyler-sterkly/claude-plugins",
+      "license": "MIT",
+      "keywords": ["planning", "pnr", "context", "hooks", "autonomous"],
+      "category": "workflows",
+      "skills": [
+        "./skills/sys-planner"
+      ]
     }
   ]
 }

@@ -93,6 +93,7 @@ You can also browse and install interactively: run `/plugin`, open the **Discove
 |--------|-------------|
 | `sys-handoff` | Capture session context, progress, and blockers for resumption |
 | `sys-optiprompt` | On-demand prompt rewriter — append `--optimize` to any prompt to get a cleaner version before Claude acts |
+| `sys-planner` | PNR-integrated persistent planning system — keeps PLAN.md in Claude's attention every turn, with gated mode for long-running tasks |
 | `sys-terminal` | Live Windows Terminal title updates with real-time Claude Code status |
 
 <br>
@@ -309,7 +310,7 @@ Generates a US (CCPA) + GDPR compliant privacy policy and a California-governed 
 
 ### <ins>ext-pnr</ins>
 
-Creates and maintains `task_plan.md`, `findings.md`, and `progress.md` tracking files for complex extension projects. Enables structured planning and session continuity across long or multi-session workstreams. Toggle with `/ext-pnr-on` and `/ext-pnr-off`.
+Automatically writes `PLAN.md`, `REPORT.md`, and a timestamped `.cache` snapshot to `.plans\` inside the confirmed project directory whenever a plan is presented. Works with sys-planner — ext-pnr writing the plan IS the trigger for sys-planner's hook-based context injection. Toggle with `/ext-pnr-on` and `/ext-pnr-off`.
 
 <br>
 
@@ -420,6 +421,37 @@ silently with zero overhead. Prompts without `--optimize` are never touched.
 
 **Installation:** This plugin requires a manual hook registration step. See the full
 installation instructions in `plugins/sys-optiprompt/README.md` after installing.
+
+<br>
+
+---
+<br>
+
+### <ins>sys-planner</ins>
+
+PNR-integrated persistent planning system. Keeps your plan in Claude's attention throughout a session by injecting it automatically on every turn — no need to re-paste or re-reference it. Activates as soon as `PNR_ENABLED=true` and `.plans/PLAN.md` exists (written by ext-pnr).
+
+**Files maintained:**
+- `.plans/PLAN.md` — live plan; overwritten by ext-pnr on each plan presentation; injected each turn
+- `.plans/REPORT.md` — snapshot written by ext-pnr; not injected
+- `.plans/FINDINGS.md` — research notes; Claude appends; accumulates across sessions
+- `.plans/PROGRESS.md` — session log; Claude appends; accumulates across sessions
+- `.plans/.cache/PLAN_YYYY-MM-DD_HH-MM-SS.md` — timestamped archive; PST; never overwritten
+
+**Slash commands:**
+- `/plan-status` — print phase progress inline
+- `/plan-attest` — SHA-256 fingerprint PLAN.md (required for gated/autonomous mode)
+- `/plan-goal` — compose a goal condition from the active plan
+- `/plan-loop` — run the plan on a loop cadence
+
+**Gated mode (long-running tasks):**
+```bash
+sh scripts/init-session.sh --gated "Task name"
+/plan-attest
+```
+Creates `.plans/<slug>/`, writes `.mode`, generates a nonce, resets the block counter. Claude cannot stop while a phase is `in_progress`. Gate hard-blocks on Claude Code; degrades to advisory on other platforms.
+
+**Requirements:** `PNR_ENABLED=true` in settings.json, ext-pnr installed (writes PLAN.md).
 
 <br>
 
