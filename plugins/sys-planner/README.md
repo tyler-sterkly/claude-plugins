@@ -30,7 +30,10 @@ That is it for interactive use. No init step required.
 
 ## Slash commands
 
-- `/plan-status` — print phase progress inline
+- `/plan-arm` — enable PNR (sets PNR_ENABLED=true in settings.json; run once per machine)
+- `/plan-disarm` — disable PNR (sets PNR_ENABLED=false; silences all writing and injection)
+- `/plan-status` — print phase progress for the active plan
+- `/plan-check` — cross-project overview of all plans; prompts to delete completed ones
 - `/plan-attest` — fingerprint PLAN.md (required for gated/autonomous mode)
 - `/plan-goal` — compose a goal condition from the active plan
 - `/plan-loop` — run the plan on a loop cadence

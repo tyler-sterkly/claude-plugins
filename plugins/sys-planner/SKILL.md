@@ -1,6 +1,6 @@
 ---
 name: sys-planner
-description: "PNR-integrated persistent planning system. Keeps PLAN.md, FINDINGS.md, and PROGRESS.md in a project-specific .plans\\ directory and injects plan context automatically on every turn. Gated on PNR_ENABLED=true — no slash command needed. Use /plan-status to check phase progress, /plan-attest to fingerprint the plan, /plan-goal and /plan-loop for long-running tasks."
+description: "PNR-integrated persistent planning system. Keeps PLAN.md, FINDINGS.md, and PROGRESS.md in a project-specific .plans\\ directory and injects plan context automatically on every turn. Gated on PNR_ENABLED=true — use /plan-arm to enable, /plan-disarm to disable. Use /plan-status to check phase progress, /plan-check for a cross-project overview and cleanup, /plan-attest to fingerprint the plan, /plan-goal and /plan-loop for long-running tasks."
 user-invocable: false
 allowed-tools: "Read Write Edit Bash Glob Grep"
 hooks:
@@ -70,7 +70,10 @@ All files live in `.plans/` inside the relevant project directory. The directory
 
 ## Slash commands
 
+- `/plan-arm` — enable PNR (sets PNR_ENABLED=true in settings.json)
+- `/plan-disarm` — disable PNR (sets PNR_ENABLED=false in settings.json)
 - `/plan-status` — print current phase progress inline
+- `/plan-check` — cross-project plan table; prompts to delete completed plans
 - `/plan-attest` — fingerprint PLAN.md; hooks will reject it if it changes unexpectedly
 - `/plan-goal` — set a goal condition composed from the active plan (composes with /goal)
 - `/plan-loop` — run the plan on a loop cadence (composes with /loop)

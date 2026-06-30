@@ -310,7 +310,7 @@ Generates a US (CCPA) + GDPR compliant privacy policy and a California-governed 
 
 ### <ins>ext-pnr</ins>
 
-Automatically writes `PLAN.md`, `REPORT.md`, and a timestamped `.cache` snapshot to `.plans\` inside the confirmed project directory whenever a plan is presented. Works with sys-planner — ext-pnr writing the plan IS the trigger for sys-planner's hook-based context injection. Toggle with `/ext-pnr-on` and `/ext-pnr-off`.
+Automatically writes `PLAN.md`, `REPORT.md`, and a timestamped `.cache` snapshot to `.plans\` inside the confirmed project directory whenever a plan is presented. Works with sys-planner — ext-pnr writing the plan IS the trigger for sys-planner's hook-based context injection. Use `/plan-arm` and `/plan-disarm` (in sys-planner) to enable or disable.
 
 <br>
 
@@ -439,7 +439,10 @@ PNR-integrated persistent planning system. Keeps your plan in Claude's attention
 - `.plans/.cache/PLAN_YYYY-MM-DD_HH-MM-SS.md` — timestamped archive; PST; never overwritten
 
 **Slash commands:**
-- `/plan-status` — print phase progress inline
+- `/plan-arm` — enable PNR (sets PNR_ENABLED=true; run once per machine)
+- `/plan-disarm` — disable PNR (sets PNR_ENABLED=false)
+- `/plan-status` — print phase progress for the active plan
+- `/plan-check` — cross-project overview of all plans; prompts to delete completed ones
 - `/plan-attest` — SHA-256 fingerprint PLAN.md (required for gated/autonomous mode)
 - `/plan-goal` — compose a goal condition from the active plan
 - `/plan-loop` — run the plan on a loop cadence

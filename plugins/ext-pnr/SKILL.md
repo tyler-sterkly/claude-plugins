@@ -76,10 +76,7 @@ try { Write-Host 'ɴᴏᴛɪᴄᴇ: ᴘɴʀ ʀᴇǫᴜᴇsᴛᴇᴅ  —  ᴘʟ�
 
 If PowerShell fails, the plain text notice in chat is the fallback — always print it regardless.
 
-## /ext-pnr-on
+## Enabling and disabling PNR
 
-Sets `PNR_ENABLED=true` in `C:\github\.claude\settings.json` under the `env` object. Persists across sessions. Confirms in chat.
-
-## /ext-pnr-off
-
-Sets `PNR_ENABLED=false` in `C:\github\.claude\settings.json` under the `env` object. Persists across sessions. No files written, no notice shown until re-enabled. Confirms in chat.
+Use `/plan-arm` to set `PNR_ENABLED=true` and `/plan-disarm` to set `PNR_ENABLED=false`.
+Both commands are part of sys-planner and write to `C:\github\.claude\settings.json`.
