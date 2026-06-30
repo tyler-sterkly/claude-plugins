@@ -92,6 +92,7 @@ You can also browse and install interactively: run `/plugin`, open the **Discove
 | Plugin | Description |
 |--------|-------------|
 | `sys-handoff` | Capture session context, progress, and blockers for resumption |
+| `sys-optiprompt` | On-demand prompt rewriter — append `--optimize` to any prompt to get a cleaner version before Claude acts |
 | `sys-terminal` | Live Windows Terminal title updates with real-time Claude Code status |
 
 <br>
@@ -394,6 +395,31 @@ Creates properly formatted Git commits with title/body rules, safety checks befo
 ### <ins>sys-handoff</ins>
 
 Captures current session context, progress, blockers, and next steps into a handoff file. Use at the end of a session so work can be resumed by the same or a different session without losing context.
+
+<br>
+
+---
+<br>
+
+### <ins>sys-optiprompt</ins>
+
+On-demand prompt rewriter. Append `--optimize` to any prompt and Claude will show you
+the original and an optimized version side by side, then ask which to use before acting.
+
+**Usage:**
+```
+explain how closures work in JavaScript --optimize
+```
+
+**Requirements:** Node.js, `ANTHROPIC_API_KEY` set in your environment.
+
+**How it works:** A `UserPromptSubmit` hook intercepts the prompt, strips the flag, calls
+`claude-haiku-4-5-20251001` to rewrite it, and injects both versions for Claude to
+present. All failure paths (no API key, network error, no meaningful change) pass through
+silently with zero overhead. Prompts without `--optimize` are never touched.
+
+**Installation:** This plugin requires a manual hook registration step. See the full
+installation instructions in `plugins/sys-optiprompt/README.md` after installing.
 
 <br>
 
