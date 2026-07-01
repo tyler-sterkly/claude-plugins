@@ -352,24 +352,6 @@
       ]
     },
     {
-      "name": "sys-frontend",
-      "source": "./plugins/sys-frontend/",
-      "description": "Guidance for distinctive, intentional visual design when building new UI or reshaping an existing one.",
-      "version": "1.0.0",
-      "author": {
-        "name": "tyler-sterkly",
-        "url": "https://github.com/tyler-sterkly"
-      },
-      "homepage": "https://github.com/tyler-sterkly/claude-plugins",
-      "repository": "https://github.com/tyler-sterkly/claude-plugins",
-      "license": "MIT",
-      "keywords": ["ui", "design", "frontend", "css", "typography"],
-      "category": "workflows",
-      "skills": [
-        "./plugins/sys-frontend"
-      ]
-    },
-    {
       "name": "sys-handoff",
       "source": "./plugins/sys-handoff/",
       "description": "Write a structured handoff note before ending a session or switching accounts.",

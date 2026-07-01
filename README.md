@@ -41,7 +41,6 @@ You can also browse and install interactively: run `/plugin`, open the **Discove
 |--------|-------------|
 | `sys-logo` | Design and iterate on logos using SVG |
 | `sys-svg` | Generate and edit SVG illustrations, icons, and graphics |
-| `sys-frontend` | Full UI design workflow with aesthetic direction and iteration |
 | `sys-web-audit` | Review interfaces against Vercel web design guidelines |
 
 <br>
@@ -97,7 +96,6 @@ You can also browse and install interactively: run `/plugin`, open the **Discove
 | `sys-planner` | PNR-integrated persistent planning system — keeps PLAN.md in Claude's attention every turn, with gated mode for long-running tasks |
 | `sys-context-clone` | Clone the current conversation to branch off or trim context (`/clone` and `/clone-half`) |
 | `sys-hud` | Guidance skill for winccp — the Windows-native terminal title manager that shows live Claude Code status |
-| `sys-terminal` | Live Windows Terminal title updates with real-time Claude Code status |
 
 <br>
 <br>
@@ -155,22 +153,6 @@ Generates and edits SVG files by hand - treating SVGs as code rather than export
 ---
 <br>
 
-### <ins>sys-frontend</ins>
-
-Full UI design workflow focused on distinctive, opinionated visual direction - not templated defaults.
-
-**Approach:**
-- Grounds every design in the actual subject matter: its materials, artifacts, vocabulary, and world. Generic choices are rejected in favour of choices that could only belong to this brief.
-- The hero is a thesis - opens with the most characteristic thing about the product, not a stock gradient and stat block.
-- Typography carries personality. Display and body faces are paired deliberately with a full type scale that is itself a memorable part of the design.
-- Takes one real aesthetic risk per design and justifies it.
-
-**Workflow:** Brainstorms a compact token system (color, type, layout, signature), critiques it against the brief before writing any code, then builds following the revised plan exactly. Runs a self-critique pass and accepts plain-language feedback for iteration rounds.
-
-<br>
-
----
-<br>
 
 ### <ins>sys-web-audit</ins>
 
@@ -473,35 +455,6 @@ Guidance skill for winccp — the Windows-native port of claude-code-pulse that 
 Invoke when the user asks about terminal titles, the `ccp` command, live status updates in the title bar, or why their terminal title isn't updating.
 
 **Requirements:** Git Bash, jq, Claude Code CLI, powershell.exe, Windows Terminal.
-
-<br>
-
----
-<br>
-
-### <ins>sys-terminal</ins>
-
-Windows-native Claude Code Pulse that updates the Windows Terminal title bar in real time as Claude works. Uses Win32 `SetWindowText` via a persistent PowerShell daemon.
-
-**Usage:** Run `ccp` instead of `claude` to start a session.
-
-**Title format:**
-```
-github (main) | Thinking
-github (feat/auth) | Tests passed
-github | fix the login bug | Committed
-```
-
-**Status icons:** Thinking, Editing, Reading, Testing, Building, Installing, Pushing, Committed, Tests passed, Tests failed, Error, Browsing, Delegating, Monitoring, Idle.
-
-**Requirements:** Git Bash, jq (`winget install jqlang.jq`), Claude Code CLI, powershell.exe, Windows Terminal.
-
-**Installation:**
-```bash
-bash ~/.local/share/ccp/install.sh
-source ~/.bashrc
-ccp "my task"
-```
 
 <br>
 
