@@ -5,7 +5,7 @@ user-invocable: true
 allowed-tools: "Bash"
 ---
 
-# sys-terminal — Claude Code Pulse for Windows
+# sys-hud — Claude Code Pulse for Windows
 
 `winccp` is a Windows-native wrapper around `claude` that updates the Windows Terminal title bar in real time as Claude works.
 

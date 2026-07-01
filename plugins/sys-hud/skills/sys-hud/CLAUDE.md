@@ -1,4 +1,4 @@
-# sys-terminal
+# sys-hud
 
 Windows Terminal title manager (winccp) that shows real-time Claude Code status in the Windows Terminal title bar. Shows project name, branch, and current activity (Thinking, Testing, Committed, etc.).
 

@@ -1,6 +1,7 @@
 ---
 name: sys-optiprompt
 description: A UserPromptSubmit hook that intercepts prompts containing --optimize, sends them to claude-haiku-4-5-20251001 for rewriting, then presents the original and optimized versions side by side and asks the user which to use. Requires Node.js and ANTHROPIC_API_KEY. Triggered manually per-prompt with --optimize — never runs automatically.
+user-invocable: false
 ---
 
 # sys-optiprompt

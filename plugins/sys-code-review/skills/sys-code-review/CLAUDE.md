@@ -10,10 +10,6 @@ Reviews a GitHub pull request using parallel agents across five dimensions (CLAU
 - Findings are deduplicated and posted as one PR comment (not multiple)
 - Uses gh CLI for all GitHub operations
 
-## Note on skill name
-
-The name field in SKILL.md frontmatter is `sys-sys-code-review` -- this appears to be a duplication artifact. The canonical name is `sys-code-review`.
-
 ## Related skills
 
 None -- standalone PR review utility.
