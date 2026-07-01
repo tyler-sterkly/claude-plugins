@@ -27,7 +27,7 @@ both and asks which to use before acting on either.
 
 ## Pass-through cases
 
-The hook passes the original prompt through unchanged when:
+The hook passes the prompt through (--optimize flag always stripped) when:
 - Haiku returns the same text or >90% word overlap
 - `ANTHROPIC_API_KEY` is not set
 - API call fails for any reason

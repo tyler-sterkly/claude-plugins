@@ -1,5 +1,3 @@
-import { createRequire } from "node:module";
-
 const input = JSON.parse(await new Promise(r => {
   let d = "";
   process.stdin.on("data", c => d += c);
@@ -16,6 +14,7 @@ const prompt = raw.replace(/\s*--optimize\b/gi, "").trim();
 
 const apiKey = process.env.ANTHROPIC_API_KEY;
 if (!apiKey) {
+  // Pass through the cleaned prompt (flag stripped) even if no API key
   process.stdout.write(JSON.stringify({ transformedPrompt: prompt }));
   process.exit(0);
 }
@@ -51,7 +50,7 @@ try {
     process.exit(0);
   }
 
-  // If >90% word overlap, no meaningful change
+  // If >90% word overlap, no meaningful change — pass through cleaned prompt
   const origWords = new Set(prompt.toLowerCase().split(/\s+/).filter(Boolean));
   const optWords = new Set(optimized.toLowerCase().split(/\s+/).filter(Boolean));
   const intersection = [...origWords].filter(w => optWords.has(w)).length;

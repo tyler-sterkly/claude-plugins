@@ -16,7 +16,7 @@ Calls Haiku to rewrite the prompt, then Claude presents both versions and asks w
 ## Hook contract
 
 - Hook type: `UserPromptSubmit`
-- Stdout: `{ "transformedPrompt": "..." }` when optimization is available; nothing otherwise
+- Stdout: `{ "transformedPrompt": "..." }` always when --optimize is present (either the note+both versions, or just the cleaned prompt on pass-through); nothing when --optimize is absent
 - Exit code: always 0 — non-zero exits are errors in Claude Code hook handling
 
 ## Integration
