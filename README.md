@@ -96,6 +96,7 @@ You can also browse and install interactively: run `/plugin`, open the **Discove
 | `sys-optiprompt` | On-demand prompt rewriter — append `--optimize` to any prompt to get a cleaner version before Claude acts |
 | `sys-planner` | PNR-integrated persistent planning system — keeps PLAN.md in Claude's attention every turn, with gated mode for long-running tasks |
 | `sys-context-clone` | Clone the current conversation to branch off or trim context (`/clone` and `/clone-half`) |
+| `sys-hud` | Guidance skill for winccp — the Windows-native terminal title manager that shows live Claude Code status |
 | `sys-terminal` | Live Windows Terminal title updates with real-time Claude Code status |
 
 <br>
@@ -459,6 +460,19 @@ sh scripts/init-session.sh --gated "Task name"
 Creates `.plans/<slug>/`, writes `.mode`, generates a nonce, resets the block counter. Claude cannot stop while a phase is `in_progress`. Gate hard-blocks on Claude Code; degrades to advisory on other platforms.
 
 **Requirements:** `PNR_ENABLED=true` in settings.json, ext-pnr installed (writes PLAN.md).
+
+<br>
+
+---
+<br>
+
+### <ins>sys-hud</ins>
+
+Guidance skill for winccp — the Windows-native port of claude-code-pulse that updates the Windows Terminal title bar in real time as Claude works. Uses Win32 `SetWindowText` via a persistent PowerShell daemon.
+
+Invoke when the user asks about terminal titles, the `ccp` command, live status updates in the title bar, or why their terminal title isn't updating.
+
+**Requirements:** Git Bash, jq, Claude Code CLI, powershell.exe, Windows Terminal.
 
 <br>
 
