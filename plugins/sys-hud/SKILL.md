@@ -1,6 +1,6 @@
 ---
-name: sys-terminal
-description: "Claude Code Pulse for Windows (sys-terminal): live terminal title manager that shows real-time status in Windows Terminal as Claude works. Use when the user asks about terminal titles, ccp, sys-terminal, or live status updates in the title bar. Also use proactively when the user asks how to start Claude Code with a descriptive title."
+name: sys-hud
+description: "Windows-native Claude Code HUD: live terminal title manager that shows real-time status in Windows Terminal as Claude works. Use when the user asks about terminal titles, ccp, sys-hud, or live status updates in the title bar. Also use proactively when the user asks how to start Claude Code with a descriptive title."
 user-invocable: true
 allowed-tools: "Bash"
 ---

@@ -10,9 +10,9 @@
   },
   "plugins": [
     {
-      "name": "cc-terminal-title",
-      "source": "./plugins/cc-terminal-title/",
-      "description": "Windows-native Claude Code Pulse: updates Windows Terminal title bar in real time with live status icons as Claude works. Port of claude-code-pulse using Win32 SetWindowText via a persistent PowerShell daemon.",
+      "name": "ext-audit",
+      "source": "./plugins/ext-audit/",
+      "description": "Reviews all code in a Firefox MV3 browser extension and produces a prioritized update plan.",
       "version": "1.0.0",
       "author": {
         "name": "tyler-sterkly",
@@ -21,123 +21,15 @@
       "homepage": "https://github.com/tyler-sterkly/claude-plugins",
       "repository": "https://github.com/tyler-sterkly/claude-plugins",
       "license": "MIT",
-      "keywords": ["windows", "terminal", "title", "status", "claude-code-pulse"],
+      "keywords": ["firefox", "extension", "audit", "review", "bitboxmedia"],
       "category": "workflows",
       "skills": [
-        "./skills/cc-terminal-title"
+        "./plugins/ext-audit"
       ]
     },
     {
-      "name": "gen-extension-md",
-      "source": "./plugins/gen-extension-md/",
-      "description": "Creates or updates the EXTENSION.md identity file for a Firefox MV3 browser extension in the BitBoxMedia suite. Reads manifest.json, config.js, locales, and icons to fill in all fields automatically.",
-      "version": "1.0.0",
-      "author": {
-        "name": "tyler-sterkly",
-        "url": "https://github.com/tyler-sterkly"
-      },
-      "homepage": "https://github.com/tyler-sterkly/claude-plugins",
-      "repository": "https://github.com/tyler-sterkly/claude-plugins",
-      "license": "MIT",
-      "keywords": ["firefox", "extension", "identity", "bitboxmedia", "manifest"],
-      "category": "workflows",
-      "skills": [
-        "./skills/gen-extension-md"
-      ]
-    },
-    {
-      "name": "logo-designer",
-      "source": "./plugins/logo-designer/",
-      "description": "Design and iterate on logos using SVG. Generates side-by-side previews and exports to PNG at standard sizes.",
-      "version": "1.0.0",
-      "author": {
-        "name": "tyler-sterkly",
-        "url": "https://github.com/tyler-sterkly"
-      },
-      "homepage": "https://github.com/tyler-sterkly/claude-plugins",
-      "repository": "https://github.com/tyler-sterkly/claude-plugins",
-      "license": "MIT",
-      "keywords": ["logo", "svg", "design", "icon", "branding"],
-      "category": "workflows",
-      "skills": [
-        "./skills/logo-designer"
-      ]
-    },
-    {
-      "name": "design-logo",
-      "source": "./plugins/design-logo/",
-      "description": "Design and iterate on logos using SVG. Generates side-by-side previews and exports to PNG at standard sizes.",
-      "version": "1.0.0",
-      "author": {
-        "name": "tyler-sterkly",
-        "url": "https://github.com/tyler-sterkly"
-      },
-      "homepage": "https://github.com/tyler-sterkly/claude-plugins",
-      "repository": "https://github.com/tyler-sterkly/claude-plugins",
-      "license": "MIT",
-      "keywords": ["logo", "svg", "design", "icon", "branding"],
-      "category": "workflows",
-      "skills": [
-        "./skills/design-logo"
-      ]
-    },
-    {
-      "name": "design-svg",
-      "source": "./plugins/design-svg/",
-      "description": "Generates and edits SVG logos, icons, and graphics by hand. Covers path commands, shape primitives, styling, accessibility, gradients, masks, sprites, optimization, and animation.",
-      "version": "1.0.0",
-      "author": {
-        "name": "tyler-sterkly",
-        "url": "https://github.com/tyler-sterkly"
-      },
-      "homepage": "https://github.com/tyler-sterkly/claude-plugins",
-      "repository": "https://github.com/tyler-sterkly/claude-plugins",
-      "license": "MIT",
-      "keywords": ["svg", "design", "icon", "logo", "graphics"],
-      "category": "workflows",
-      "skills": [
-        "./skills/design-svg"
-      ]
-    },
-    {
-      "name": "design-icon-set",
-      "source": "./plugins/design-icon-set/",
-      "description": "Generate a full icon set and favicon from a single square source icon. Produces PNG sizes, a multi-resolution favicon.ico, and an optional logo lockup.",
-      "version": "1.0.0",
-      "author": {
-        "name": "tyler-sterkly",
-        "url": "https://github.com/tyler-sterkly"
-      },
-      "homepage": "https://github.com/tyler-sterkly/claude-plugins",
-      "repository": "https://github.com/tyler-sterkly/claude-plugins",
-      "license": "MIT",
-      "keywords": ["icons", "favicon", "png", "svg", "logo"],
-      "category": "workflows",
-      "skills": [
-        "./skills/design-icon-set"
-      ]
-    },
-    {
-      "name": "design-frontend-ui",
-      "source": "./plugins/design-frontend-ui/",
-      "description": "Guidance for distinctive, intentional visual design when building new UI or reshaping an existing one.",
-      "version": "1.0.0",
-      "author": {
-        "name": "tyler-sterkly",
-        "url": "https://github.com/tyler-sterkly"
-      },
-      "homepage": "https://github.com/tyler-sterkly/claude-plugins",
-      "repository": "https://github.com/tyler-sterkly/claude-plugins",
-      "license": "MIT",
-      "keywords": ["ui", "design", "frontend", "css", "typography"],
-      "category": "workflows",
-      "skills": [
-        "./skills/design-frontend-ui"
-      ]
-    },
-    {
-      "name": "gen-changelog",
-      "source": "./plugins/gen-changelog/",
+      "name": "ext-changelog",
+      "source": "./plugins/ext-changelog/",
       "description": "Generates a clean, public-facing changelog and GitHub commit message for a browser extension release or update.",
       "version": "1.0.0",
       "author": {
@@ -150,13 +42,13 @@
       "keywords": ["changelog", "release", "commit", "firefox", "extension"],
       "category": "workflows",
       "skills": [
-        "./skills/gen-changelog"
+        "./plugins/ext-changelog"
       ]
     },
     {
-      "name": "gen-privacy",
-      "source": "./plugins/gen-privacy/",
-      "description": "Generates a US + GDPR compliant privacy policy for a Firefox browser extension and its associated website.",
+      "name": "ext-context",
+      "source": "./plugins/ext-context/",
+      "description": "Examine a Firefox browser extension project and generate a CLAUDE.md file.",
       "version": "1.0.0",
       "author": {
         "name": "tyler-sterkly",
@@ -165,16 +57,16 @@
       "homepage": "https://github.com/tyler-sterkly/claude-plugins",
       "repository": "https://github.com/tyler-sterkly/claude-plugins",
       "license": "MIT",
-      "keywords": ["privacy", "gdpr", "ccpa", "legal", "firefox"],
+      "keywords": ["firefox", "extension", "context", "claude-md", "bitboxmedia"],
       "category": "workflows",
       "skills": [
-        "./skills/gen-privacy"
+        "./plugins/ext-context"
       ]
     },
     {
-      "name": "gen-terms",
-      "source": "./plugins/gen-terms/",
-      "description": "Generates terms of service for a Firefox browser extension and its website, governed by California law.",
+      "name": "ext-duplicate",
+      "source": "./plugins/ext-duplicate/",
+      "description": "Duplicate an existing Firefox extension into a new project directory.",
       "version": "1.0.0",
       "author": {
         "name": "tyler-sterkly",
@@ -183,16 +75,16 @@
       "homepage": "https://github.com/tyler-sterkly/claude-plugins",
       "repository": "https://github.com/tyler-sterkly/claude-plugins",
       "license": "MIT",
-      "keywords": ["terms", "legal", "tos", "firefox", "extension"],
+      "keywords": ["firefox", "extension", "duplicate", "scaffold", "bitboxmedia"],
       "category": "workflows",
       "skills": [
-        "./skills/gen-terms"
+        "./plugins/ext-duplicate"
       ]
     },
     {
-      "name": "gen-deep-research",
-      "source": "./plugins/gen-deep-research/",
-      "description": "Deep research harness: fan-out web searches, fetch sources, adversarially verify claims, synthesize a cited report.",
+      "name": "ext-icons",
+      "source": "./plugins/ext-icons/",
+      "description": "Generate a full icon set and favicon from a single square source icon. Produces PNG sizes and a multi-resolution favicon.ico.",
       "version": "1.0.0",
       "author": {
         "name": "tyler-sterkly",
@@ -201,16 +93,16 @@
       "homepage": "https://github.com/tyler-sterkly/claude-plugins",
       "repository": "https://github.com/tyler-sterkly/claude-plugins",
       "license": "MIT",
-      "keywords": ["research", "web", "search", "report", "citations"],
+      "keywords": ["icons", "favicon", "png", "svg", "extension"],
       "category": "workflows",
       "skills": [
-        "./skills/gen-deep-research"
+        "./plugins/ext-icons"
       ]
     },
     {
-      "name": "sys-commit",
-      "source": "./plugins/sys-commit/",
-      "description": "Generates a git commit title and body, shows the user for approval, then commits. Works standalone (asks user for repo, diff source, or commit range) or invoked by another skill (receives title, body, repo path directly). Never pushes. Used by ext-changelog for the commit step.",
+      "name": "ext-ids",
+      "source": "./plugins/ext-ids/",
+      "description": "Check, prompt for, and optionally generate Firefox and Chrome extension IDs.",
       "version": "1.0.0",
       "author": {
         "name": "tyler-sterkly",
@@ -219,16 +111,70 @@
       "homepage": "https://github.com/tyler-sterkly/claude-plugins",
       "repository": "https://github.com/tyler-sterkly/claude-plugins",
       "license": "MIT",
-      "keywords": ["git", "commit", "workflow", "changelog", "approval"],
+      "keywords": ["firefox", "chrome", "extension", "ids", "manifest"],
       "category": "workflows",
       "skills": [
-        "./skills/sys-commit"
+        "./plugins/ext-ids"
+      ]
+    },
+    {
+      "name": "ext-ingest",
+      "source": "./plugins/ext-ingest/",
+      "description": "Build a new Firefox MV3 extension by ingesting a template zip and reference zips.",
+      "version": "1.0.0",
+      "author": {
+        "name": "tyler-sterkly",
+        "url": "https://github.com/tyler-sterkly"
+      },
+      "homepage": "https://github.com/tyler-sterkly/claude-plugins",
+      "repository": "https://github.com/tyler-sterkly/claude-plugins",
+      "license": "MIT",
+      "keywords": ["firefox", "extension", "ingest", "template", "scaffold"],
+      "category": "workflows",
+      "skills": [
+        "./plugins/ext-ingest"
+      ]
+    },
+    {
+      "name": "ext-legal",
+      "source": "./plugins/ext-legal/",
+      "description": "Generate a US + GDPR compliant privacy policy and terms of service for a Firefox browser extension and its website.",
+      "version": "1.0.0",
+      "author": {
+        "name": "tyler-sterkly",
+        "url": "https://github.com/tyler-sterkly"
+      },
+      "homepage": "https://github.com/tyler-sterkly/claude-plugins",
+      "repository": "https://github.com/tyler-sterkly/claude-plugins",
+      "license": "MIT",
+      "keywords": ["privacy", "terms", "gdpr", "ccpa", "legal"],
+      "category": "workflows",
+      "skills": [
+        "./plugins/ext-legal"
+      ]
+    },
+    {
+      "name": "ext-md",
+      "source": "./plugins/ext-md/",
+      "description": "Creates or updates the EXTENSION.md identity file for a Firefox MV3 browser extension in the BitBoxMedia suite.",
+      "version": "1.0.0",
+      "author": {
+        "name": "tyler-sterkly",
+        "url": "https://github.com/tyler-sterkly"
+      },
+      "homepage": "https://github.com/tyler-sterkly/claude-plugins",
+      "repository": "https://github.com/tyler-sterkly/claude-plugins",
+      "license": "MIT",
+      "keywords": ["firefox", "extension", "identity", "bitboxmedia", "manifest"],
+      "category": "workflows",
+      "skills": [
+        "./plugins/ext-md"
       ]
     },
     {
       "name": "ext-pnr",
       "source": "./plugins/ext-pnr/",
-      "description": "Automatically writes PLAN.md, REPORT.md, and timestamped PNR snapshots whenever a plan is presented. Toggle with /ext-pnr-on and /ext-pnr-off. State persists via PNR_ENABLED env var in settings.json.",
+      "description": "Automatically writes PLAN.md, REPORT.md, and timestamped PNR snapshots whenever a plan is presented. Toggle with /ext-pnr-on and /ext-pnr-off.",
       "version": "1.0.0",
       "author": {
         "name": "tyler-sterkly",
@@ -240,12 +186,102 @@
       "keywords": ["plan", "report", "pnr", "files", "workflow"],
       "category": "workflows",
       "skills": [
-        "./skills/ext-pnr"
+        "./plugins/ext-pnr"
       ]
     },
     {
-      "name": "code-review",
-      "source": "./plugins/code-review/",
+      "name": "ext-publish",
+      "source": "./plugins/ext-publish/",
+      "description": "Bump the manifest version and package a Firefox extension for publishing.",
+      "version": "1.0.0",
+      "author": {
+        "name": "tyler-sterkly",
+        "url": "https://github.com/tyler-sterkly"
+      },
+      "homepage": "https://github.com/tyler-sterkly/claude-plugins",
+      "repository": "https://github.com/tyler-sterkly/claude-plugins",
+      "license": "MIT",
+      "keywords": ["firefox", "extension", "publish", "manifest", "version"],
+      "category": "workflows",
+      "skills": [
+        "./plugins/ext-publish"
+      ]
+    },
+    {
+      "name": "ext-review",
+      "source": "./plugins/ext-review/",
+      "description": "Perform a comprehensive code quality review of a Firefox browser extension.",
+      "version": "1.0.0",
+      "author": {
+        "name": "tyler-sterkly",
+        "url": "https://github.com/tyler-sterkly"
+      },
+      "homepage": "https://github.com/tyler-sterkly/claude-plugins",
+      "repository": "https://github.com/tyler-sterkly/claude-plugins",
+      "license": "MIT",
+      "keywords": ["firefox", "extension", "review", "quality", "bitboxmedia"],
+      "category": "workflows",
+      "skills": [
+        "./plugins/ext-review"
+      ]
+    },
+    {
+      "name": "ext-verbiage",
+      "source": "./plugins/ext-verbiage/",
+      "description": "Write and review public-facing copy for browser extensions.",
+      "version": "1.0.0",
+      "author": {
+        "name": "tyler-sterkly",
+        "url": "https://github.com/tyler-sterkly"
+      },
+      "homepage": "https://github.com/tyler-sterkly/claude-plugins",
+      "repository": "https://github.com/tyler-sterkly/claude-plugins",
+      "license": "MIT",
+      "keywords": ["copy", "verbiage", "firefox", "extension", "store"],
+      "category": "workflows",
+      "skills": [
+        "./plugins/ext-verbiage"
+      ]
+    },
+    {
+      "name": "ext-website",
+      "source": "./plugins/ext-website/",
+      "description": "Generate a complete frontend website for a Firefox browser extension.",
+      "version": "1.0.0",
+      "author": {
+        "name": "tyler-sterkly",
+        "url": "https://github.com/tyler-sterkly"
+      },
+      "homepage": "https://github.com/tyler-sterkly/claude-plugins",
+      "repository": "https://github.com/tyler-sterkly/claude-plugins",
+      "license": "MIT",
+      "keywords": ["website", "frontend", "firefox", "extension", "landing-page"],
+      "category": "workflows",
+      "skills": [
+        "./plugins/ext-website"
+      ]
+    },
+    {
+      "name": "sys-catch",
+      "source": "./plugins/sys-catch/",
+      "description": "Searches all past conversations for every instance where Claude responded with 'Good catch' and audits them for quality.",
+      "version": "1.0.0",
+      "author": {
+        "name": "tyler-sterkly",
+        "url": "https://github.com/tyler-sterkly"
+      },
+      "homepage": "https://github.com/tyler-sterkly/claude-plugins",
+      "repository": "https://github.com/tyler-sterkly/claude-plugins",
+      "license": "MIT",
+      "keywords": ["audit", "conversations", "quality", "history"],
+      "category": "workflows",
+      "skills": [
+        "./plugins/sys-catch"
+      ]
+    },
+    {
+      "name": "sys-code-review",
+      "source": "./plugins/sys-code-review/",
       "description": "Reviews a pull request for bugs and CLAUDE.md compliance using parallel agents, then posts findings as a PR comment.",
       "version": "1.0.0",
       "author": {
@@ -258,13 +294,157 @@
       "keywords": ["code-review", "pr", "github", "pull-request", "quality"],
       "category": "workflows",
       "skills": [
-        "./skills/code-review"
+        "./plugins/sys-code-review"
+      ]
+    },
+    {
+      "name": "sys-commit",
+      "source": "./plugins/sys-commit/",
+      "description": "Generates a git commit title and body, shows the user for approval, then commits. Never pushes. Used by ext-changelog for the commit step.",
+      "version": "1.0.0",
+      "author": {
+        "name": "tyler-sterkly",
+        "url": "https://github.com/tyler-sterkly"
+      },
+      "homepage": "https://github.com/tyler-sterkly/claude-plugins",
+      "repository": "https://github.com/tyler-sterkly/claude-plugins",
+      "license": "MIT",
+      "keywords": ["git", "commit", "workflow", "changelog", "approval"],
+      "category": "workflows",
+      "skills": [
+        "./plugins/sys-commit"
+      ]
+    },
+    {
+      "name": "sys-context-clone",
+      "source": "./plugins/sys-context-clone/",
+      "description": "Clone the current conversation into a new resumable session, either full or trimmed to a percentage to reduce token usage.",
+      "version": "1.0.0",
+      "author": {
+        "name": "tyler-sterkly",
+        "url": "https://github.com/tyler-sterkly"
+      },
+      "homepage": "https://github.com/tyler-sterkly/claude-plugins",
+      "repository": "https://github.com/tyler-sterkly/claude-plugins",
+      "license": "MIT",
+      "keywords": ["session", "clone", "context", "conversation", "branch"],
+      "category": "workflows",
+      "skills": [
+        "./plugins/sys-context-clone"
+      ]
+    },
+    {
+      "name": "sys-context-tuner",
+      "source": "./plugins/sys-context-tuner/",
+      "description": "Analyze recent Claude Code conversations and CLAUDE.md files to suggest improvements to your instructions.",
+      "version": "1.0.0",
+      "author": {
+        "name": "tyler-sterkly",
+        "url": "https://github.com/tyler-sterkly"
+      },
+      "homepage": "https://github.com/tyler-sterkly/claude-plugins",
+      "repository": "https://github.com/tyler-sterkly/claude-plugins",
+      "license": "MIT",
+      "keywords": ["claude-md", "tuning", "instructions", "context", "conversations"],
+      "category": "workflows",
+      "skills": [
+        "./plugins/sys-context-tuner"
+      ]
+    },
+    {
+      "name": "sys-frontend",
+      "source": "./plugins/sys-frontend/",
+      "description": "Guidance for distinctive, intentional visual design when building new UI or reshaping an existing one.",
+      "version": "1.0.0",
+      "author": {
+        "name": "tyler-sterkly",
+        "url": "https://github.com/tyler-sterkly"
+      },
+      "homepage": "https://github.com/tyler-sterkly/claude-plugins",
+      "repository": "https://github.com/tyler-sterkly/claude-plugins",
+      "license": "MIT",
+      "keywords": ["ui", "design", "frontend", "css", "typography"],
+      "category": "workflows",
+      "skills": [
+        "./plugins/sys-frontend"
+      ]
+    },
+    {
+      "name": "sys-handoff",
+      "source": "./plugins/sys-handoff/",
+      "description": "Write a structured handoff note before ending a session or switching accounts.",
+      "version": "1.0.0",
+      "author": {
+        "name": "tyler-sterkly",
+        "url": "https://github.com/tyler-sterkly"
+      },
+      "homepage": "https://github.com/tyler-sterkly/claude-plugins",
+      "repository": "https://github.com/tyler-sterkly/claude-plugins",
+      "license": "MIT",
+      "keywords": ["handoff", "session", "context", "notes", "workflow"],
+      "category": "workflows",
+      "skills": [
+        "./plugins/sys-handoff"
+      ]
+    },
+    {
+      "name": "sys-hud",
+      "source": "./plugins/sys-hud/",
+      "description": "Windows-native Claude Code HUD: updates Windows Terminal title bar in real time with live status icons as Claude works.",
+      "version": "1.0.0",
+      "author": {
+        "name": "tyler-sterkly",
+        "url": "https://github.com/tyler-sterkly"
+      },
+      "homepage": "https://github.com/tyler-sterkly/claude-plugins",
+      "repository": "https://github.com/tyler-sterkly/claude-plugins",
+      "license": "MIT",
+      "keywords": ["windows", "terminal", "title", "status", "hud"],
+      "category": "workflows",
+      "skills": [
+        "./plugins/sys-hud"
+      ]
+    },
+    {
+      "name": "sys-logo",
+      "source": "./plugins/sys-logo/",
+      "description": "Design and iterate on logos using SVG. Runs a brief interview before generating, produces side-by-side previews, and exports to PNG at standard sizes.",
+      "version": "1.0.0",
+      "author": {
+        "name": "tyler-sterkly",
+        "url": "https://github.com/tyler-sterkly"
+      },
+      "homepage": "https://github.com/tyler-sterkly/claude-plugins",
+      "repository": "https://github.com/tyler-sterkly/claude-plugins",
+      "license": "MIT",
+      "keywords": ["logo", "svg", "design", "icon", "branding"],
+      "category": "workflows",
+      "skills": [
+        "./plugins/sys-logo"
+      ]
+    },
+    {
+      "name": "sys-optiprompt",
+      "source": "./plugins/sys-optiprompt/",
+      "description": "UserPromptSubmit hook that intercepts prompts containing --optimize, rewrites them via Haiku, then presents both versions for the user to choose.",
+      "version": "1.0.0",
+      "author": {
+        "name": "tyler-sterkly",
+        "url": "https://github.com/tyler-sterkly"
+      },
+      "homepage": "https://github.com/tyler-sterkly/claude-plugins",
+      "repository": "https://github.com/tyler-sterkly/claude-plugins",
+      "license": "MIT",
+      "keywords": ["hook", "prompt", "optimize", "rewrite", "haiku"],
+      "category": "workflows",
+      "skills": [
+        "./plugins/sys-optiprompt"
       ]
     },
     {
       "name": "sys-planner",
       "source": "./plugins/sys-planner/",
-      "description": "PNR-integrated persistent planning system. Keeps PLAN.md, FINDINGS.md, and PROGRESS.md in a project-specific .plans\\ directory and injects plan context automatically on every turn. Gated on PNR_ENABLED=true — no slash command needed. Use /plan-status, /plan-attest, /plan-goal, and /plan-loop for long-running tasks.",
+      "description": "PNR-integrated persistent planning system. Keeps PLAN.md, FINDINGS.md, and PROGRESS.md in a .plans directory and injects plan context automatically on every turn.",
       "version": "1.0.0",
       "author": {
         "name": "tyler-sterkly",
@@ -276,7 +456,43 @@
       "keywords": ["planning", "pnr", "context", "hooks", "autonomous"],
       "category": "workflows",
       "skills": [
-        "./skills/sys-planner"
+        "./plugins/sys-planner"
+      ]
+    },
+    {
+      "name": "sys-svg",
+      "source": "./plugins/sys-svg/",
+      "description": "Generates and edits SVG logos, icons, and graphics by hand. Covers path commands, shape primitives, styling, gradients, masks, and optimization.",
+      "version": "1.0.0",
+      "author": {
+        "name": "tyler-sterkly",
+        "url": "https://github.com/tyler-sterkly"
+      },
+      "homepage": "https://github.com/tyler-sterkly/claude-plugins",
+      "repository": "https://github.com/tyler-sterkly/claude-plugins",
+      "license": "MIT",
+      "keywords": ["svg", "design", "icon", "logo", "graphics"],
+      "category": "workflows",
+      "skills": [
+        "./plugins/sys-svg"
+      ]
+    },
+    {
+      "name": "sys-web-audit",
+      "source": "./plugins/sys-web-audit/",
+      "description": "Review UI code for Web Interface Guidelines compliance.",
+      "version": "1.0.0",
+      "author": {
+        "name": "tyler-sterkly",
+        "url": "https://github.com/tyler-sterkly"
+      },
+      "homepage": "https://github.com/tyler-sterkly/claude-plugins",
+      "repository": "https://github.com/tyler-sterkly/claude-plugins",
+      "license": "MIT",
+      "keywords": ["web", "audit", "ui", "guidelines", "accessibility"],
+      "category": "workflows",
+      "skills": [
+        "./plugins/sys-web-audit"
       ]
     }
   ]
