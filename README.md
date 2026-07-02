@@ -96,6 +96,7 @@ You can also browse and install interactively: run `/plugin`, open the **Discove
 | `sys-planner` | PNR-integrated persistent planning system — keeps PLAN.md in Claude's attention every turn, with gated mode for long-running tasks |
 | `sys-context-clone` | Clone the current conversation to branch off or trim context (`/clone` and `/clone-half`) |
 | `sys-hud` | Guidance skill for winccp — the Windows-native terminal title manager that shows live Claude Code status |
+| `sys-bettercoms` | Developer communication style — tone, brevity, formatting, and file delivery rules for all dev-facing interactions |
 
 <br>
 <br>
@@ -455,6 +456,24 @@ Guidance skill for winccp — the Windows-native port of claude-code-pulse that 
 Invoke when the user asks about terminal titles, the `ccp` command, live status updates in the title bar, or why their terminal title isn't updating.
 
 **Requirements:** Git Bash, jq, Claude Code CLI, powershell.exe, Windows Terminal.
+
+<br>
+
+---
+<br>
+
+### <ins>sys-bettercoms</ins>
+
+Developer communication style skill. Governs tone, formatting, brevity, and delivery format for all developer-facing interactions with Claude.
+
+**Enforces:**
+- Short, casual replies by default — no over-explaining
+- No bold, underline, or headers in chat
+- No semicolons or dashes of any kind
+- Code delivered as downloadable files (not inline) unless requested otherwise
+- Extension reviews raise technical issues only; fixes return a full project zip
+
+**Scope:** Dev-facing only. Never applies to public-facing copy, marketing text, or anything an end user reads.
 
 <br>
 

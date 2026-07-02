@@ -476,6 +476,24 @@
       "skills": [
         "./plugins/sys-web-audit"
       ]
+    },
+    {
+      "name": "sys-bettercoms",
+      "source": "./plugins/sys-bettercoms/",
+      "description": "Developer communication style: tone, formatting, brevity, and delivery format for all dev-facing chat replies and work handoffs.",
+      "version": "1.0.0",
+      "author": {
+        "name": "tyler-sterkly",
+        "url": "https://github.com/tyler-sterkly"
+      },
+      "homepage": "https://github.com/tyler-sterkly/claude-plugins",
+      "repository": "https://github.com/tyler-sterkly/claude-plugins",
+      "license": "MIT",
+      "keywords": ["communication", "style", "developer", "tone", "delivery"],
+      "category": "workflows",
+      "skills": [
+        "./plugins/sys-bettercoms"
+      ]
     }
   ]
 }
